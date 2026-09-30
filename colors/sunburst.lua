@@ -414,6 +414,19 @@ local groups = {
   BlinkCmpKindFile = { fg = c.string },
   BlinkCmpKindFolder = { fg = c.entity },
 
+  -- nvim-dap
+  DapBreakpoint = { fg = c.support_const },
+  DapBreakpointCondition = { fg = c.regexp },
+  DapLogPoint = { fg = c.entity },
+  DapBreakpointRejected = { fg = c.gutter },
+  DapStopped = { fg = c.string },
+  DapStoppedLine = { bg = c.diff_add },
+
+  -- flutter-tools
+  FlutterToolsDimmed = { fg = c.gutter, italic = true }, -- closing labels, outline hints
+  FlutterWidgetGuides = { fg = c.border },
+  FlutterToolsOutlineIndentGuides = { fg = c.border },
+
   -- lazy.nvim
   LazyH1 = { fg = c.bg, bg = c.keyword, bold = true },
   LazyButton = { bg = c.line },

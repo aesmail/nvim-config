@@ -128,6 +128,8 @@ return {
       spec = {
         { "<leader>b", group = "buffer" },
         { "<leader>c", group = "code" },
+        { "<leader>d", group = "debug" },
+        { "<leader>F", group = "flutter" },
         { "<leader>f", group = "find" },
         { "<leader>g", group = "git" },
         { "<leader>r", group = "rails" },
@@ -165,6 +167,15 @@ return {
             color = { fg = "#E28964" },
           },
           {
+            -- the device the Flutter app runs on (or would run on)
+            function() return "󰜭 " .. vim.g.flutter_tools_decorations.device end,
+            cond = function()
+              local deco = vim.g.flutter_tools_decorations
+              return vim.bo.filetype == "dart" and deco ~= nil and (deco.device or "") ~= ""
+            end,
+            color = { fg = "#89BDFF" },
+          },
+          {
             function()
               local names = vim.tbl_map(function(c) return c.name end, vim.lsp.get_clients({ bufnr = 0 }))
               return #names > 0 and (" " .. table.concat(names, ", ")) or ""
@@ -175,7 +186,7 @@ return {
         lualine_y = { "progress" },
         lualine_z = { "location" },
       },
-      extensions = { "neo-tree", "lazy" },
+      extensions = { "neo-tree", "lazy", "nvim-dap-ui" },
     },
   },
 }

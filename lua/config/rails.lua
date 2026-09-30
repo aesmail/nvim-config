@@ -1,8 +1,7 @@
 -- Rails / Bundler tasks, run in a terminal split at the bottom of the screen.
 -- Keymaps for these live in lua/plugins/rails.lua (<leader>r...).
+local runner = require("config.runner")
 local M = {}
-
-local term_win -- the runner window, reused between commands
 
 local function is_rails_app(name, path)
   return name == "Gemfile" and vim.uv.fs_stat(vim.fs.joinpath(path, "config", "application.rb")) ~= nil
@@ -22,54 +21,13 @@ local function rails_cmd(root)
   return vim.fn.executable(root .. "/bin/rails") == 1 and "bin/rails" or "bundle exec rails"
 end
 
---- Run a shell command in the runner split.
---- opts.interactive: focus the terminal in insert mode (console); otherwise stay in the current window.
---- opts.on_exit(code, buf): called after the command finishes.
-local function run_in_terminal(cmd, opts)
-  opts = opts or {}
-  local origin = vim.api.nvim_get_current_win()
-  if term_win and vim.api.nvim_win_is_valid(term_win) then vim.api.nvim_win_close(term_win, true) end
-
-  vim.cmd("botright 15new")
-  term_win = vim.api.nvim_get_current_win()
-  local buf = vim.api.nvim_get_current_buf()
-  vim.bo[buf].bufhidden = "wipe"
-  vim.wo[term_win].number = false
-  vim.wo[term_win].relativenumber = false
-  vim.wo[term_win].signcolumn = "no"
-  vim.wo[term_win].winfixheight = true
-  vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = buf, desc = "Close runner" })
-
-  vim.fn.jobstart(cmd, {
-    term = true,
-    cwd = opts.cwd or M.root(),
-    on_exit = function(_, code)
-      -- let the terminal flush its last lines before we read them
-      vim.defer_fn(function()
-        vim.cmd.checktime() -- reload Gemfile, schema.rb, etc. if they changed
-        if code ~= 0 then
-          vim.notify(("`%s` failed (exit %d)"):format(cmd, code), vim.log.levels.ERROR)
-        end
-        if opts.on_exit and vim.api.nvim_buf_is_valid(buf) then opts.on_exit(code, buf) end
-      end, 50)
-    end,
-  })
-
-  if opts.interactive then
-    vim.cmd.startinsert()
-  elseif vim.api.nvim_win_is_valid(origin) then
-    vim.api.nvim_set_current_win(origin)
-  end
-  return buf
-end
-
 function M.run(task, opts)
   local root = M.root()
-  return run_in_terminal(rails_cmd(root) .. " " .. task, vim.tbl_extend("force", { cwd = root }, opts or {}))
+  return runner.run(rails_cmd(root) .. " " .. task, vim.tbl_extend("force", { cwd = root }, opts or {}))
 end
 
 function M.bundle(args)
-  run_in_terminal("bundle " .. args, { cwd = vim.fs.root(0, "Gemfile") or vim.fn.getcwd() })
+  runner.run("bundle " .. args, { cwd = vim.fs.root(0, "Gemfile") or vim.fn.getcwd() })
 end
 
 function M.console()
@@ -114,7 +72,7 @@ function M.generate(kind)
         for _, f in ipairs(files) do
           if spec.open and f:match(spec.open) then target = f break end
         end
-        if term_win and vim.api.nvim_win_is_valid(term_win) then vim.api.nvim_win_close(term_win, true) end
+        runner.close()
         vim.cmd.edit(vim.fn.fnameescape(root .. "/" .. target))
         vim.notify("Created:\n  " .. table.concat(files, "\n  "))
       end,
@@ -153,7 +111,7 @@ function M.test_file()
   local root = M.root()
   local rel = vim.fs.relpath(root, file) or file
   if rel:match("_spec%.rb$") then
-    run_in_terminal("bundle exec rspec " .. vim.fn.shellescape(rel), { cwd = root })
+    runner.run("bundle exec rspec " .. vim.fn.shellescape(rel), { cwd = root })
   elseif rel:match("_test%.rb$") then
     M.run("test " .. vim.fn.shellescape(rel))
   else

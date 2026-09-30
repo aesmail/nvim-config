@@ -25,8 +25,9 @@ return {
       snippets = { preset = "luasnip" },
       keymap = {
         preset = "none",
-        -- TextMate-style Tab: expand a trigger (menu if it's ambiguous), else accept the
-        -- selected completion, else jump to the next snippet field, else indent.
+        -- TextMate-style Tab: expand a trigger (menu if it's ambiguous; LSP snippets like
+        -- Dart's stless too), else accept the selected completion, else jump to the next
+        -- snippet field, else indent.
         ["<Tab>"] = {
           function(cmp)
             if require("config.snippets").expand() then
@@ -34,6 +35,7 @@ return {
               return true
             end
           end,
+          function(cmp) return require("config.snippets").accept_lsp_snippet(cmp) end,
           function(cmp)
             if cmp.is_menu_visible() and cmp.get_selected_item() then return cmp.accept() end
           end,
