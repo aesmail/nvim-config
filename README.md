@@ -16,7 +16,7 @@ lua/config/                  options, keymaps, autocmds, lazy bootstrap
   phoenix.lua                Phoenix/Mix commands (<leader>p..., mapped in keymaps.lua)
   snippets.lua               TextMate-style <Tab> expansion (menu for ambiguous triggers)
   snippet_filetypes.lua      TextMate scope selectors -> snippet sets (models, migrations, ERB...)
-lua/plugins/                 one file per area: treesitter, lsp, completion, formatting, rails, flutter, editor
+lua/plugins/                 one file per area: treesitter, lsp, completion, formatting, rails, flutter, debug, editor
 after/queries/*/highlights.scm   extra captures so Ruby/Rails/HTML/Dart/Elixir/HEEx get TextMate's scopes
 snippets/                    converted TextMate Ruby, Rails and Elixir bundle snippets (VS Code JSON)
 scripts/tmbundle2snippets.py the converter (see its header to regenerate)
@@ -69,6 +69,11 @@ breakpoints work without extra setup (the debug UI opens when execution stops).
   you can answer phx.gen prompts.
 - `<leader>pma` looks the package up on Hex, adds `{:pkg, "~> x.y"}` to `deps` in `mix.exs` and runs
   `mix deps.get`.
+- Debugging uses ElixirLS's debug adapter (`mise use -g elixir-ls`; Expert has no debugger). Set a
+  breakpoint (`<leader>db`), then `<leader>dc` and pick `phx.server`, `mix test (this file)`,
+  `mix test (test at cursor)` or `mix test (all)`. Only modules with breakpoints run in the
+  interpreter, so the app stays fast. The first session compiles ElixirLS (about a minute).
+  ElixirLS writes a `.elixir_ls/` directory in the project; add it to `.gitignore`.
 - Tailwind class completion works in projects the Tailwind language server can build. Phoenix 1.8's
   vendored daisyUI plugin (`@plugin "../vendor/daisyui"` in `assets/css/app.css`) currently stops it
   from matching any file; without that plugin (or in Rails/Tailwind projects) it works.
@@ -100,7 +105,7 @@ breakpoints work without extra setup (the debug UI opens when execution stops).
 | `<leader>pi` / `ps` / `pR` | IEx / server with IEx / routes |
 | `<leader>pt` / `pn` / `pT` / `pa` | test this file / test at cursor / all tests / alternate (lib <-> test) |
 | `<leader>db` / `dB` / `dc` | toggle breakpoint / conditional breakpoint / continue |
-| `<leader>do` / `di` / `dO` / `dr` / `dt` | step over / into / out / run to cursor / terminate |
+| `<leader>do` / `di` / `dO` / `dr` / `dl` / `dt` | step over / into / out / run to cursor / rerun last / terminate |
 | `<leader>du` / `de` | toggle debug UI / evaluate expression |
 
 Rails/Mix commands and `flutter test` run in a split at the bottom (`q` closes it).

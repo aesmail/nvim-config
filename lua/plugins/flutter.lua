@@ -2,11 +2,6 @@ local function flutter(fn)
   return function() require("config.flutter")[fn]() end
 end
 
-local function dap(fn, ...)
-  local args = { ... }
-  return function() require("dap")[fn](unpack(args)) end
-end
-
 return {
   {
     -- Dart LSP (dartls), run/hot reload/hot restart, devices & emulators, dev log, outline,
@@ -53,47 +48,5 @@ return {
         },
       },
     },
-  },
-
-  -- Debugging (used by Flutter; works for any nvim-dap adapter)
-  {
-    "mfussenegger/nvim-dap",
-    lazy = true,
-    keys = {
-      { "<leader>db", dap("toggle_breakpoint"), desc = "Toggle breakpoint" },
-      {
-        "<leader>dB",
-        function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end,
-        desc = "Conditional breakpoint",
-      },
-      { "<leader>dc", dap("continue"), desc = "Continue / start" },
-      { "<leader>do", dap("step_over"), desc = "Step over" },
-      { "<leader>di", dap("step_into"), desc = "Step into" },
-      { "<leader>dO", dap("step_out"), desc = "Step out" },
-      { "<leader>dr", dap("run_to_cursor"), desc = "Run to cursor" },
-      { "<leader>dt", dap("terminate"), desc = "Terminate" },
-      { "<leader>du", function() require("dapui").toggle() end, desc = "Toggle debug UI" },
-      { "<leader>de", function() require("dapui").eval() end, mode = { "n", "v" }, desc = "Evaluate expression" },
-    },
-    config = function()
-      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DapBreakpoint" })
-      vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "DapBreakpointCondition" })
-      vim.fn.sign_define("DapLogPoint", { text = "◉", texthl = "DapLogPoint" })
-      vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DapBreakpointRejected" })
-      vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DapStopped", linehl = "DapStoppedLine" })
-
-      -- The debug UI opens when execution stops (breakpoint/exception) rather than on every
-      -- :FlutterRun, and closes when the session ends.
-      local listeners = require("dap").listeners
-      listeners.after.event_stopped.dapui = function() require("dapui").open() end
-      listeners.before.event_terminated.dapui = function() require("dapui").close() end
-      listeners.before.event_exited.dapui = function() require("dapui").close() end
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    lazy = true,
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    opts = {},
   },
 }
