@@ -1,0 +1,55 @@
+{
+  "name": "textmate-ruby-rails",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "eruby"
+        ],
+        "path": "./eruby.json"
+      },
+      {
+        "language": [
+          "rails"
+        ],
+        "path": "./rails.json"
+      },
+      {
+        "language": [
+          "rails_controller"
+        ],
+        "path": "./rails_controller.json"
+      },
+      {
+        "language": [
+          "rails_fixtures"
+        ],
+        "path": "./rails_fixtures.json"
+      },
+      {
+        "language": [
+          "rails_migration"
+        ],
+        "path": "./rails_migration.json"
+      },
+      {
+        "language": [
+          "rails_model"
+        ],
+        "path": "./rails_model.json"
+      },
+      {
+        "language": [
+          "rails_routes"
+        ],
+        "path": "./rails_routes.json"
+      },
+      {
+        "language": [
+          "ruby"
+        ],
+        "path": "./ruby.json"
+      }
+    ]
+  }
+}

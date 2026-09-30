@@ -1,0 +1,274 @@
+{
+  "Table column binary": {
+    "prefix": "tcbi",
+    "body": [
+      "t.binary :${1:title}${2:, limit: ${3:2}.megabytes}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column binary"
+  },
+  "Table column boolean": {
+    "prefix": "tcb",
+    "body": [
+      "t.boolean :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column boolean"
+  },
+  "Table column date": {
+    "prefix": "tcda",
+    "body": [
+      "t.date :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column date"
+  },
+  "Table column datetime": {
+    "prefix": "tcdt",
+    "body": [
+      "t.datetime :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column datetime"
+  },
+  "Table column decimal": {
+    "prefix": "tcd",
+    "body": [
+      "t.decimal :${1:title}${2:${3:, precision: ${4:10}}${5:, scale: ${6:2}}}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column decimal"
+  },
+  "Table column float": {
+    "prefix": "tcf",
+    "body": [
+      "t.float :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column float"
+  },
+  "Table column integer": {
+    "prefix": "tci",
+    "body": [
+      "t.integer :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column integer"
+  },
+  "Table column lock_version": {
+    "prefix": "tcl",
+    "body": [
+      "t.integer :lock_version, null: false, default: 0",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column lock_version"
+  },
+  "Table column(s) references": {
+    "prefix": "tcr",
+    "body": [
+      "t.references :${1:taggable}${2:, polymorphic: ${3:{ default: '${4:Photo}' \\}}}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column(s) references"
+  },
+  "Table column string": {
+    "prefix": "tcs",
+    "body": [
+      "t.string :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column string"
+  },
+  "Table column text": {
+    "prefix": "tct",
+    "body": [
+      "t.text :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column text"
+  },
+  "Table column time": {
+    "prefix": "tcti",
+    "body": [
+      "t.time :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column time"
+  },
+  "Table column timestamp": {
+    "prefix": "tcts",
+    "body": [
+      "t.timestamp :${1:title}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column timestamp"
+  },
+  "Table column timestamps": {
+    "prefix": "tctss",
+    "body": [
+      "t.timestamps",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column timestamps"
+  },
+  "Create Column in Table": {
+    "prefix": "mcol",
+    "body": [
+      "t.column ${1:title}, :${2:string}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Create Column in Table"
+  },
+  "Create Several Columns in Table": {
+    "prefix": "mccc",
+    "body": [
+      "t.column ${1:title}, :${2:string}",
+      "mccc$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Create Several Columns in Table"
+  },
+  "Table column(s) change": {
+    "prefix": "tch",
+    "body": [
+      "t.change :${1:name}${2:, :${3:string}${4:, ${5:limit}: ${6:80}}}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column(s) change"
+  },
+  "Table column(s) rename": {
+    "prefix": "tre",
+    "body": [
+      "t.rename :${1:old_column_name}, :${2:new_column_name}",
+      "$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Table column(s) rename"
+  },
+  "t.binary (tcbi)": {
+    "prefix": "t.",
+    "body": [
+      "t.binary :${1:title}${2:, limit: ${3:2}.megabytes}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.binary (tcbi)"
+  },
+  "t.boolean (tcb)": {
+    "prefix": "t.",
+    "body": [
+      "t.boolean :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.boolean (tcb)"
+  },
+  "t.change (tch)": {
+    "prefix": "t.",
+    "body": [
+      "t.change :${1:name}${2:, :${3:string}${4:, ${5:limit}: ${6:80}}}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.change (tch)"
+  },
+  "t.date (tcda)": {
+    "prefix": "t.",
+    "body": [
+      "t.date :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.date (tcda)"
+  },
+  "t.datetime (tcdt)": {
+    "prefix": "t.",
+    "body": [
+      "t.datetime :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.datetime (tcdt)"
+  },
+  "t.decimal (tcd)": {
+    "prefix": "t.",
+    "body": [
+      "t.decimal :${1:title}${2:${3:, precision: ${4:10}}${5:, scale: ${6:2}}}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.decimal (tcd)"
+  },
+  "t.float (tcf)": {
+    "prefix": "t.",
+    "body": [
+      "t.float :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.float (tcf)"
+  },
+  "t.integer (tci)": {
+    "prefix": "t.",
+    "body": [
+      "t.integer :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.integer (tci)"
+  },
+  "t.lock_version (tcl)": {
+    "prefix": "t.",
+    "body": [
+      "t.integer :lock_version, null: false, default: 0",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.lock_version (tcl)"
+  },
+  "t.references (tcr)": {
+    "prefix": "t.",
+    "body": [
+      "t.references :${1:taggable}${2:, polymorphic: ${3:{ default: '${4:Photo}' \\}}}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.references (tcr)"
+  },
+  "t.rename (tre)": {
+    "prefix": "t.",
+    "body": [
+      "t.rename :${1:old_column_name}, :${2:new_column_name}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.rename (tre)"
+  },
+  "t.string (tcs)": {
+    "prefix": "t.",
+    "body": [
+      "t.string :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.string (tcs)"
+  },
+  "t.text (tct)": {
+    "prefix": "t.",
+    "body": [
+      "t.text :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.text (tct)"
+  },
+  "t.time (tcti)": {
+    "prefix": "t.",
+    "body": [
+      "t.time :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.time (tcti)"
+  },
+  "t.timestamp (tcts)": {
+    "prefix": "t.",
+    "body": [
+      "t.timestamp :${1:title}",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.timestamp (tcts)"
+  },
+  "t.timestamps (tctss)": {
+    "prefix": "t.",
+    "body": [
+      "t.timestamps",
+      "t.$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: t.timestamps (tctss)"
+  }
+}

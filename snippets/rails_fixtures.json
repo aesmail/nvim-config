@@ -1,0 +1,9 @@
+{
+  "<%= Fixtures.identify(:symbol) %>": {
+    "prefix": "fi",
+    "body": [
+      "<%= ActiveRecord::FixtureSet.identify(:${1:name}) %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: <%= Fixtures.identify(:symbol) %>"
+  }
+}

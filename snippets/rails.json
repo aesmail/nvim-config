@@ -1,0 +1,621 @@
+{
+  "Create controller class": {
+    "prefix": "cla",
+    "body": [
+      "class ${1:Model}Controller < ApplicationController",
+      "\tbefore_action :find_${2:model}",
+      "",
+      "\t$0",
+      "",
+      "\tprivate",
+      "\tdef find_${2}",
+      "\t\t@$2 = ${3:$1}.find(params[:id]) if params[:id]",
+      "\tend",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Create controller class"
+  },
+  "Create functional test class": {
+    "prefix": "cla",
+    "body": [
+      "require \"test_helper\"",
+      "",
+      "class ${1:Model}ControllerTest < ActionDispatch::IntegrationTest",
+      "\ttest$0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: Create functional test class"
+  },
+  "Rails.logger.debug": {
+    "prefix": "deb",
+    "body": [
+      "Rails.logger.debug \"${1:message}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: Rails.logger.debug"
+  },
+  "assert_redirected_to": {
+    "prefix": "asrt",
+    "body": [
+      "assert_redirected_to ${2:action: \"${1:index}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_redirected_to"
+  },
+  "assert_response": {
+    "prefix": "asre",
+    "body": [
+      "assert_response :${1:success}${2:, @response.body}$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_response"
+  },
+  "accepts_nested_attributes_for": {
+    "prefix": "anaf",
+    "body": [
+      "accepts_nested_attributes_for :${1:association_name}${2:${3:, allow_destroy: true}${4:, reject_if: proc { |obj| ${5:obj.blank?} \\}}}",
+      ""
+    ],
+    "description": "TextMate Ruby on Rails bundle: accepts_nested_attributes_for"
+  },
+  "after_create": {
+    "prefix": "aftc",
+    "body": [
+      "after_create "
+    ],
+    "description": "TextMate Ruby on Rails bundle: after_create"
+  },
+  "after_destroy": {
+    "prefix": "aftd",
+    "body": [
+      "after_destroy "
+    ],
+    "description": "TextMate Ruby on Rails bundle: after_destroy"
+  },
+  "after_save": {
+    "prefix": "afts",
+    "body": [
+      "after_save "
+    ],
+    "description": "TextMate Ruby on Rails bundle: after_save"
+  },
+  "after_update": {
+    "prefix": "aftu",
+    "body": [
+      "after_update "
+    ],
+    "description": "TextMate Ruby on Rails bundle: after_update"
+  },
+  "alias_attribute": {
+    "prefix": "alias",
+    "body": [
+      "alias_attribute :${1:new_name}, :${2:old_name}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: alias_attribute"
+  },
+  "assert_difference": {
+    "prefix": "asd",
+    "body": [
+      "assert_difference \"${1:Model}.${2:count}\", ${3:+1} do",
+      "  $0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_difference"
+  },
+  "assert_no_difference": {
+    "prefix": "asnd",
+    "body": [
+      "assert_no_difference \"${1:Model}.${2:count}\" do",
+      "  $0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_no_difference"
+  },
+  "assert_redirected_to (nested path plural)": {
+    "prefix": "asrt",
+    "body": [
+      "assert_redirected_to ${10:${2:parent}_${3:child}_path(${4:@}${5:${2}})}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_redirected_to (nested path plural)"
+  },
+  "assert_redirected_to (nested path)": {
+    "prefix": "asrt",
+    "body": [
+      "assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_redirected_to (nested path)"
+  },
+  "assert_redirected_to (path plural)": {
+    "prefix": "asrt",
+    "body": [
+      "assert_redirected_to ${10:${2:model}s_path}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_redirected_to (path plural)"
+  },
+  "assert_redirected_to (path)": {
+    "prefix": "asrt",
+    "body": [
+      "assert_redirected_to ${2:${12:model}_path(${13:@}${14:${12}})}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_redirected_to (path)"
+  },
+  "assert_select": {
+    "prefix": "ass",
+    "body": [
+      "assert_select '${1:path}'${2:, ${3:text}: ${4:'${5:inner_html}'}}${6: do",
+      "\t$0",
+      "end}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: assert_select"
+  },
+  "before_create": {
+    "prefix": "befc",
+    "body": [
+      "before_create "
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_create"
+  },
+  "before_destroy": {
+    "prefix": "befd",
+    "body": [
+      "before_destroy "
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_destroy"
+  },
+  "before_filter": {
+    "prefix": "bf",
+    "body": [
+      "before_action :${1:method}${2:${3:, only: ${4:[:${5:action}, :${6:action}]}}${7:, except: ${8:[:${9:action}, :${10:action}]}}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_filter"
+  },
+  "before_save": {
+    "prefix": "befs",
+    "body": [
+      "before_save "
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_save"
+  },
+  "before_update": {
+    "prefix": "befu",
+    "body": [
+      "before_update "
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_update"
+  },
+  "cattr_accessor": {
+    "prefix": "crw",
+    "body": [
+      "cattr_accessor :${0:attr_names}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: cattr_accessor"
+  },
+  "find(id)": {
+    "prefix": "fini",
+    "body": [
+      "find(${1:id})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: find(id)"
+  },
+  "find_each": {
+    "prefix": "fine",
+    "body": [
+      "find_each do |${1:record}|",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: find_each"
+  },
+  "find_in_batches": {
+    "prefix": "finb",
+    "body": [
+      "find_in_batches do |${1:batch}|",
+      "\t$1.each do |${2:record}|",
+      "\t\t$0",
+      "\tend",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: find_in_batches"
+  },
+  "gem :git": {
+    "prefix": "gemg",
+    "body": [
+      "gem '${1:paperclip}', git: \"${2:https://github.com/thoughtbot/paperclip.git}\"${3:, branch: \"${4:rails3}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: gem :git"
+  },
+  "gem": {
+    "prefix": "gem",
+    "body": [
+      "gem '${1:name}'${2:${3:, \"${4:1.0}\"}${5:${6:, require: ${7:\"${8:$1}\"}}${9:, group: :${10:test}}}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: gem"
+  },
+  "layout": {
+    "prefix": "layout",
+    "body": [
+      "layout \"${1:template_name}\"${2:${3:, only: ${4:[:${5:action}, :${6:action}]}}${7:, except: ${8:[:${9:action}, :${10:action}]}}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: layout"
+  },
+  "logger.debug": {
+    "prefix": "logd",
+    "body": [
+      "${1:Rails.}logger.debug { \"${2:message}\" }$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: logger.debug"
+  },
+  "logger.error": {
+    "prefix": "loge",
+    "body": [
+      "logger.error { \"${1:message}\" }$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: logger.error"
+  },
+  "logger.fatal": {
+    "prefix": "logf",
+    "body": [
+      "logger.fatal { \"${1:message}\" }$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: logger.fatal"
+  },
+  "logger.info": {
+    "prefix": "logi",
+    "body": [
+      "logger.info { \"${1:message}\" }$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: logger.info"
+  },
+  "logger.warn": {
+    "prefix": "logw",
+    "body": [
+      "logger.warn { \"${1:message}\" }$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: logger.warn"
+  },
+  "map(&:sym_proc)": {
+    "prefix": "mp",
+    "body": [
+      "map(&:${1:id})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: map(&:sym_proc)"
+  },
+  "mattr_accessor": {
+    "prefix": "mrw",
+    "body": [
+      "mattr_accessor :${0:attr_names}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: mattr_accessor"
+  },
+  "flash[…]": {
+    "prefix": "flash",
+    "body": [
+      "flash[:${1:notice}] = \"${2:Successfully created...}\"$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: flash[…]"
+  },
+  "redirect_to (action)": {
+    "prefix": "rea",
+    "body": [
+      "redirect_to action: \"${1:index}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (action)"
+  },
+  "redirect_to (action, id)": {
+    "prefix": "reai",
+    "body": [
+      "redirect_to action: \"${1:show}\", id: ${0:@item}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (action, id)"
+  },
+  "redirect_to (controller)": {
+    "prefix": "rec",
+    "body": [
+      "redirect_to controller: \"${1:items}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (controller)"
+  },
+  "redirect_to (controller, action)": {
+    "prefix": "reca",
+    "body": [
+      "redirect_to controller: \"${1:items}\", action: \"${2:list}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (controller, action)"
+  },
+  "redirect_to (controller, action, id)": {
+    "prefix": "recai",
+    "body": [
+      "redirect_to controller: \"${1:items}\", action: \"${2:show}\", id: ${0:@item}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (controller, action, id)"
+  },
+  "redirect_to (nested path plural)": {
+    "prefix": "renpp",
+    "body": [
+      "redirect_to(${2:${10:parent}_${11:child}_path(${12:@}${13:${10}})})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (nested path plural)"
+  },
+  "redirect_to (nested path)": {
+    "prefix": "renp",
+    "body": [
+      "redirect_to(${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (nested path)"
+  },
+  "redirect_to (path plural)": {
+    "prefix": "repp",
+    "body": [
+      "redirect_to(${2:${10:model}s_path})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (path plural)"
+  },
+  "redirect_to (path)": {
+    "prefix": "rep",
+    "body": [
+      "redirect_to(${2:${12:model}_path(${13:@}${14:${12}})})"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to (path)"
+  },
+  "redirect_to :back": {
+    "prefix": "reb",
+    "body": [
+      "redirect_back_or_to ${1:root_path}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: redirect_to :back"
+  },
+  "render (action)": {
+    "prefix": "ra",
+    "body": [
+      "render action: \"${1:action}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (action)"
+  },
+  "render (action, layout)": {
+    "prefix": "ral",
+    "body": [
+      "render action: \"${1:action}\", layout: \"${2:layoutname}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (action, layout)"
+  },
+  "render (file)": {
+    "prefix": "rf",
+    "body": [
+      "render file: \"${1:filepath}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (file)"
+  },
+  "render (inline)": {
+    "prefix": "ri",
+    "body": [
+      "render inline: \"${1:<%= 'hello' %>}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (inline)"
+  },
+  "render (inline, locals)": {
+    "prefix": "ril",
+    "body": [
+      "render inline: \"${1:<%= 'hello' %>}\", locals: { ${2::name} => \"${3:value}\"$4 }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (inline, locals)"
+  },
+  "render (layout)": {
+    "prefix": "rl",
+    "body": [
+      "render layout: \"${1:layoutname}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (layout)"
+  },
+  "render (partial)": {
+    "prefix": "rp",
+    "body": [
+      "render partial: \"${1:item}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial)"
+  },
+  "render (partial, collection)": {
+    "prefix": "rpc",
+    "body": [
+      "render partial: \"${1:item}\", collection: ${2:@$1s}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, collection)"
+  },
+  "render (partial, locals)": {
+    "prefix": "rpl",
+    "body": [
+      "render partial: \"${1:item}\", locals: { :${2:$1} => ${3:@$1}$0 }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, locals)"
+  },
+  "render (partial, object)": {
+    "prefix": "rpo",
+    "body": [
+      "render partial: \"${1:item}\", object: ${2:@$1}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, object)"
+  },
+  "render (partial, status)": {
+    "prefix": "rps",
+    "body": [
+      "render partial: \"${1:item}\", status: ${2:500}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, status)"
+  },
+  "setup do..end": {
+    "prefix": "setup",
+    "body": [
+      "setup do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: setup do..end"
+  },
+  "test do..end": {
+    "prefix": "test",
+    "body": [
+      "test \"${1:something interesting}\" do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: test do..end"
+  },
+  "validates": {
+    "prefix": "v",
+    "body": [
+      "validates :${1:attribute}${2:,  acceptance: ${3:true}}${4:,",
+      "                                confirmation: ${5:true}}${6:,",
+      "                                exclusion: { in: ${7:%w( ${8:mov avi} )} \\}}${9:,",
+      "                                inclusion: { in: ${10:%w( ${11:mov avi} )} \\}}${12:,",
+      "                                format: { with: /${13:^[${14:\\w\\d}]+\\z}/ \\}}${15:,",
+      "                                length: { minimum: ${16:0}, maximum: ${17:0}, }}${18:,",
+      "                                numericality: ${19:true}}${20:,",
+      "                                presence: ${21:true}}${22:,",
+      "                                uniqueness: ${23:true}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates"
+  },
+  "validates_acceptance_of if": {
+    "prefix": "vaoif",
+    "body": [
+      "validates_acceptance_of :${1:terms}${2:${3:, accept: \"${4:1}\"}${5:, message: \"${6:You must accept the terms of service}\"}}, if: proc { |obj| ${7:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_acceptance_of if"
+  },
+  "validates_acceptance_of": {
+    "prefix": "vao",
+    "body": [
+      "validates_acceptance_of :${1:terms}${2:${3:, accept: \"${4:1}\"}${5:, message: \"${6:You must accept the terms of service}\"}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_acceptance_of"
+  },
+  "validates_associated": {
+    "prefix": "va",
+    "body": [
+      "validates_associated :${1:attribute}${2:, on: :${3:create}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_associated"
+  },
+  "validates_associated if": {
+    "prefix": "vaif",
+    "body": [
+      "validates_associated :${1:attribute}${2:, on: :${3:create}, if: proc { |obj| ${5:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_associated if"
+  },
+  "validates_confirmation_of": {
+    "prefix": "vc",
+    "body": [
+      "validates_confirmation_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:should match confirmation}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_confirmation_of"
+  },
+  "validates_confirmation_of if": {
+    "prefix": "vcif",
+    "body": [
+      "validates_confirmation_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:should match confirmation}\", if: proc { |obj| ${5:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_confirmation_of if"
+  },
+  "validates_exclusion_of": {
+    "prefix": "ve",
+    "body": [
+      "validates_exclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not allowed}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_exclusion_of"
+  },
+  "validates_exclusion_of if": {
+    "prefix": "veif",
+    "body": [
+      "validates_exclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not allowed}\"}, if: proc { |obj| ${7:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_exclusion_of if"
+  },
+  "validates_format_of if": {
+    "prefix": "vfif",
+    "body": [
+      "validates_format_of :${1:attribute}, with: /${2:\\A[${3:\\w\\d}]+\\z}/${4:, on: :${5:create}, message: \"${6:is invalid}\"}, if: proc { |obj| ${7:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_format_of if"
+  },
+  "validates_format_of": {
+    "prefix": "vf",
+    "body": [
+      "validates_format_of :${1:attribute}, with: /${2:\\A[${3:\\w\\d}]+\\z}/${4:, on: :${5:create}, message: \"${6:is invalid}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_format_of"
+  },
+  "validates_inclusion_of if": {
+    "prefix": "viif",
+    "body": [
+      "validates_inclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not included in the list}\"}, if: proc { |obj| ${7:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_inclusion_of if"
+  },
+  "validates_inclusion_of": {
+    "prefix": "vi",
+    "body": [
+      "validates_inclusion_of :${1:attribute}${2:, in: ${3:%w( ${4:mov avi} )}, on: :${5:create}, message: \"${6:extension %s is not included in the list}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_inclusion_of"
+  },
+  "validates_length_of": {
+    "prefix": "vl",
+    "body": [
+      "validates_length_of :${1:attribute}, within: ${2:3..20}${3:, on: :${4:create}, message: \"${5:must be present}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_length_of"
+  },
+  "validates_length_of if": {
+    "prefix": "vlif",
+    "body": [
+      "validates_length_of :${1:attribute}, within: ${2:3..20}${3:, on: :${4:create}, message: \"${5:must be present}\"}, if: proc { |obj| ${6:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_length_of if"
+  },
+  "validates_numericality_of if": {
+    "prefix": "vnif",
+    "body": [
+      "validates_numericality_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:is not a number}\"}, if: proc { |obj| ${5:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_numericality_of if"
+  },
+  "validates_numericality_of": {
+    "prefix": "vn",
+    "body": [
+      "validates_numericality_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:is not a number}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_numericality_of"
+  },
+  "validates_presence_of": {
+    "prefix": "vp",
+    "body": [
+      "validates_presence_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:can't be blank}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_presence_of"
+  },
+  "validates_presence_of if": {
+    "prefix": "vpif",
+    "body": [
+      "validates_presence_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:can't be blank}\"}, if: proc { |obj| ${5:obj.condition?} }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_presence_of if"
+  },
+  "validates_uniqueness_of": {
+    "prefix": "vu",
+    "body": [
+      "validates_uniqueness_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:must be unique}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_uniqueness_of"
+  },
+  "validates_uniqueness_of if": {
+    "prefix": "vuif",
+    "body": [
+      "validates_uniqueness_of :${1:attribute}${2:, on: :${3:create}, message: \"${4:must be unique}\", if: proc { |obj| ${6:obj.condition?} }}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: validates_uniqueness_of if"
+  },
+  "before_action": {
+    "prefix": "ba",
+    "body": [
+      "before_action :${1:method}${2:, only: %i[ ${3:show edit update destroy} ]}"
+    ],
+    "description": "Added (Rails 7/8): before_action"
+  }
+}

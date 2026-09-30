@@ -1,0 +1,18 @@
+{
+  "format (respond_with)": {
+    "prefix": "format",
+    "body": [
+      "format.${1:html|xml|json|js|any} { $0 }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: format (respond_with)"
+  },
+  "params.expect (strong parameters)": {
+    "prefix": "pe",
+    "body": [
+      "def ${1:model}_params",
+      "\tparams.expect(${1}: [ ${2::name} ])",
+      "end"
+    ],
+    "description": "Added (Rails 7/8): params.expect (strong parameters)"
+  }
+}

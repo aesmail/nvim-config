@@ -1,0 +1,90 @@
+{
+  "after_validation": {
+    "prefix": "aftv",
+    "body": [
+      "after_validation :${1:field}${2:, on: :${3:create|update}${4:${5:, allow_blank: true}${6:, allow_nil: true}}}$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: after_validation"
+  },
+  "before_validation": {
+    "prefix": "befv",
+    "body": [
+      "before_validation :${1:field}${2:, on: :${3:create|update}${4:${5:, allow_blank: true}${6:, allow_nil: true}}}$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: before_validation"
+  },
+  "belongs_to": {
+    "prefix": "bt",
+    "body": [
+      "belongs_to :${1:object}${2:, class_name: \"${3:${1/([a-zA-Z]+)|_/${1:/capitalize}/g}}\", foreign_key: \"${4:${1}_id}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: belongs_to"
+  },
+  "default_scope": {
+    "prefix": "dscope",
+    "body": [
+      "default_scope { ${1:order(${2:created_at: :desc})} }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: default_scope"
+  },
+  "has_and_belongs_to_many": {
+    "prefix": "habtm",
+    "body": [
+      "has_and_belongs_to_many :${1:object}${2:, join_table: \"${3:table_name}\", foreign_key: \"${4:${1}_id}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: has_and_belongs_to_many"
+  },
+  "has_many": {
+    "prefix": "hm",
+    "body": [
+      "has_many :${1:object}s${2:, class_name: \"${1}\", foreign_key: \"${4:reference}_id\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: has_many"
+  },
+  "has_many (through)": {
+    "prefix": "hmt",
+    "body": [
+      "has_many :${1:objects}, through: :${2:join_association}${3:, source: :${4:${2}_table_foreign_key_to_${1}_table}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: has_many (through)"
+  },
+  "has_many :dependent => :destroy": {
+    "prefix": "hmd",
+    "body": [
+      "has_many :${1:object}s${2:, class_name: \"${1}\", foreign_key: \"${4:reference}_id\"}, dependent: :destroy$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: has_many :dependent => :destroy"
+  },
+  "has_one": {
+    "prefix": "ho",
+    "body": [
+      "has_one :${1:object}${2:, class_name: \"${3:${1/([a-zA-Z]+)|_/${1:/capitalize}/g}}\", foreign_key: \"${4:${1}_id}\"}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: has_one"
+  },
+  "scope lambda": {
+    "prefix": "scopel",
+    "body": [
+      "scope :${1:name}, ->(${2:param}) { ${3:where(${4:field}: ${5:$2})} }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: scope lambda"
+  },
+  "scope with extension": {
+    "prefix": "scopee",
+    "body": [
+      "scope :${1:name}, -> { ${2:where(${3:field}: ${4:value})} } do",
+      "\tdef ${5:method_name}",
+      "\t\t$0",
+      "\tend",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: scope with extension"
+  },
+  "scope": {
+    "prefix": "scope",
+    "body": [
+      "scope :${1:name}, -> { ${2:where(${3:field}: ${4:value})} }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: scope"
+  }
+}

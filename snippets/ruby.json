@@ -1,0 +1,1213 @@
+{
+  "# encoding: UTF-8": {
+    "prefix": "utf8",
+    "body": [
+      "# encoding: ${1:UTF-8}",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: # encoding: UTF-8"
+  },
+  "# frozen_string_literal: true": {
+    "prefix": "frozen",
+    "body": [
+      "# frozen_string_literal: ${1:true}",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: # frozen_string_literal: true"
+  },
+  "#!/usr/bin/env ruby": {
+    "prefix": "rb",
+    "body": [
+      "#!/usr/bin/env ruby",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: #!/usr/bin/env ruby"
+  },
+  "#inspect": {
+    "prefix": "i",
+    "body": [
+      "inspect"
+    ],
+    "description": "TextMate Ruby bundle: #inspect"
+  },
+  "if … else … end": {
+    "prefix": "ife",
+    "body": [
+      "if ${1:condition}",
+      "\t$2",
+      "else",
+      "\t$3",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: if … else … end"
+  },
+  "if … end": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: if … end"
+  },
+  "case … end": {
+    "prefix": "case",
+    "body": [
+      "case ${1:object}",
+      "when ${2:condition}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: case … end"
+  },
+  ":yields:": {
+    "prefix": "y",
+    "body": [
+      " :yields: ${0:arguments}"
+    ],
+    "description": "TextMate Ruby bundle: :yields:"
+  },
+  "Add ‘# =>’ Marker": {
+    "prefix": "#",
+    "body": [
+      "# => "
+    ],
+    "description": "TextMate Ruby bundle: Add ‘# =>’ Marker"
+  },
+  "Array.new(10) { |i| .. }": {
+    "prefix": "Array",
+    "body": [
+      "Array.new(${1:10}) { ${2/(.+)/|/}${2:i}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: Array.new(10) { |i| .. }"
+  },
+  "Benchmark.bmbm do .. end": {
+    "prefix": "bm-",
+    "body": [
+      "TESTS = ${1:10_000}",
+      "Benchmark.bmbm do |results|",
+      "  $0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: Benchmark.bmbm do .. end"
+  },
+  "Dir.glob(\"..\") { |file| .. }": {
+    "prefix": "Dir",
+    "body": [
+      "Dir.glob(${1:\"${2:dir/glob/*}\"}) { |${3:file}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: Dir.glob(\"..\") { |file| .. }"
+  },
+  "Dir[\"..\"]": {
+    "prefix": "Dir",
+    "body": [
+      "Dir[${1:\"${2:glob/**/*.rb}\"}]"
+    ],
+    "description": "TextMate Ruby bundle: Dir[\"..\"]"
+  },
+  "File.foreach (\"..\") { |line| .. }": {
+    "prefix": "File",
+    "body": [
+      "File.foreach(${1:\"${2:path/to/file}\"}) { |${3:line}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: File.foreach (\"..\") { |line| .. }"
+  },
+  "File.open(\"..\") { |file| .. }": {
+    "prefix": "File",
+    "body": [
+      "File.open(${1:\"${2:path/to/file}\"}${3/((^[rwab+]+$)|.*)/${2:+, \"}/}${3:w}${3/((^[rwab+]+$)|.*)/${2:+\"}/}) { |${4:file}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: File.open(\"..\") { |file| .. }"
+  },
+  "File.read(\"..\")": {
+    "prefix": "File",
+    "body": [
+      "File.read(${1:\"${2:path/to/file}\"})"
+    ],
+    "description": "TextMate Ruby bundle: File.read(\"..\")"
+  },
+  "Hash.new { |hash, key| hash[key] = .. }": {
+    "prefix": "Hash",
+    "body": [
+      "Hash.new { |${1:hash}, ${2:key}| ${1:hash}[${2:key}] = $0 }"
+    ],
+    "description": "TextMate Ruby bundle: Hash.new { |hash, key| hash[key] = .. }"
+  },
+  "Marshal.dump(.., file)": {
+    "prefix": "Md",
+    "body": [
+      "File.open(${1:\"${2:path/to/file}.dump\"}, \"wb\") { |${3:file}| Marshal.dump(${4:obj}, ${3:file}) }"
+    ],
+    "description": "TextMate Ruby bundle: Marshal.dump(.., file)"
+  },
+  "Marshal.load(obj)": {
+    "prefix": "Ml",
+    "body": [
+      "File.open(${1:\"${2:path/to/file}.dump\"}, \"rb\") { |${3:file}| Marshal.load(${3:file}) }"
+    ],
+    "description": "TextMate Ruby bundle: Marshal.load(obj)"
+  },
+  "PStore.new( .. )": {
+    "prefix": "Pn-",
+    "body": [
+      "PStore.new(${1:\"${2:file_name.pstore}\"})"
+    ],
+    "description": "TextMate Ruby bundle: PStore.new( .. )"
+  },
+  "New Block": {
+    "prefix": "=b",
+    "body": [
+      "=begin rdoc",
+      "\t$0",
+      "=end"
+    ],
+    "description": "TextMate Ruby bundle: New Block"
+  },
+  "begin … rescue … end": {
+    "prefix": "begin",
+    "body": [
+      "begin",
+      "\t${3:$TM_SELECTED_TEXT}",
+      "rescue ${1:Exception}${2/.+/ => /}${2:e}",
+      "\t$0",
+      "end",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: begin … rescue … end"
+  },
+  "YAML.dump(.., file)": {
+    "prefix": "Yd-",
+    "body": [
+      "File.open(${1:\"${2:path/to/file}.yaml\"}, \"w\") { |${3:file}| YAML.dump(${4:obj}, ${3:file}) }"
+    ],
+    "description": "TextMate Ruby bundle: YAML.dump(.., file)"
+  },
+  "YAML.load(file)": {
+    "prefix": "Yl-",
+    "body": [
+      "File.open(${1:\"${2:path/to/file}.yaml\"}) { |${3:file}| YAML.load(${3:file}) }"
+    ],
+    "description": "TextMate Ruby bundle: YAML.load(file)"
+  },
+  "__END__": {
+    "prefix": "end",
+    "body": [
+      "__END__",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: __END__"
+  },
+  "alias_method ..": {
+    "prefix": "am",
+    "body": [
+      "alias_method :${1:new_name}, :${0:old_name}"
+    ],
+    "description": "TextMate Ruby bundle: alias_method .."
+  },
+  "all? { |e| .. }": {
+    "prefix": "all",
+    "body": [
+      "all? { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: all? { |e| .. }"
+  },
+  "any? { |e| .. }": {
+    "prefix": "any",
+    "body": [
+      "any? { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: any? { |e| .. }"
+  },
+  "application { .. }": {
+    "prefix": "app",
+    "body": [
+      "if __FILE__ == \\$PROGRAM_NAME",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: application { .. }"
+  },
+  "assert(..)": {
+    "prefix": "as",
+    "body": [
+      "assert(${1:test}, \"${0:Failure message.}\")"
+    ],
+    "description": "TextMate Ruby bundle: assert(..)"
+  },
+  "assert_equal(..)": {
+    "prefix": "ase",
+    "body": [
+      "assert_equal(${1:expected}, ${0:actual})"
+    ],
+    "description": "TextMate Ruby bundle: assert_equal(..)"
+  },
+  "assert_in_delta(..)": {
+    "prefix": "asid",
+    "body": [
+      "assert_in_delta(${1:expected_float}, ${2:actual_float}, ${0:2 ** -20})"
+    ],
+    "description": "TextMate Ruby bundle: assert_in_delta(..)"
+  },
+  "assert_instance_of(..)": {
+    "prefix": "asio",
+    "body": [
+      "assert_instance_of(${1:ExpectedClass}, ${0:actual_instance})"
+    ],
+    "description": "TextMate Ruby bundle: assert_instance_of(..)"
+  },
+  "assert_kind_of(..)": {
+    "prefix": "asko",
+    "body": [
+      "assert_kind_of(${1:ExpectedKind}, ${0:actual_instance})"
+    ],
+    "description": "TextMate Ruby bundle: assert_kind_of(..)"
+  },
+  "assert_match(..)": {
+    "prefix": "asm",
+    "body": [
+      "assert_match(/${1:expected_pattern}/, ${0:actual_string})"
+    ],
+    "description": "TextMate Ruby bundle: assert_match(..)"
+  },
+  "assert_nil(..)": {
+    "prefix": "asn",
+    "body": [
+      "assert_nil(${0:instance})"
+    ],
+    "description": "TextMate Ruby bundle: assert_nil(..)"
+  },
+  "assert_no_match(..)": {
+    "prefix": "asnm",
+    "body": [
+      "assert_no_match(/${1:unexpected_pattern}/, ${0:actual_string})"
+    ],
+    "description": "TextMate Ruby bundle: assert_no_match(..)"
+  },
+  "assert_not_equal(..)": {
+    "prefix": "asne",
+    "body": [
+      "assert_not_equal(${1:unexpected}, ${0:actual})"
+    ],
+    "description": "TextMate Ruby bundle: assert_not_equal(..)"
+  },
+  "assert_not_nil(..)": {
+    "prefix": "asnn",
+    "body": [
+      "assert_not_nil(${0:instance})"
+    ],
+    "description": "TextMate Ruby bundle: assert_not_nil(..)"
+  },
+  "assert_not_same(..)": {
+    "prefix": "asns",
+    "body": [
+      "assert_not_same(${1:unexpected}, ${0:actual})"
+    ],
+    "description": "TextMate Ruby bundle: assert_not_same(..)"
+  },
+  "assert_nothing_raised(..) { .. }": {
+    "prefix": "asnr",
+    "body": [
+      "assert_nothing_raised(${1:Exception}) { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: assert_nothing_raised(..) { .. }"
+  },
+  "assert_nothing_thrown { .. }": {
+    "prefix": "asnt",
+    "body": [
+      "assert_nothing_thrown { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: assert_nothing_thrown { .. }"
+  },
+  "assert_operator(..)": {
+    "prefix": "aso",
+    "body": [
+      "assert_operator(${1:left}, :${2:operator}, ${0:right})"
+    ],
+    "description": "TextMate Ruby bundle: assert_operator(..)"
+  },
+  "assert_raises(..) { .. }": {
+    "prefix": "asr",
+    "body": [
+      "assert_raises(${1:Exception}) { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: assert_raises(..) { .. }"
+  },
+  "assert_respond_to(..)": {
+    "prefix": "asrt",
+    "body": [
+      "assert_respond_to(${1:object}, :${0:method})"
+    ],
+    "description": "TextMate Ruby bundle: assert_respond_to(..)"
+  },
+  "assert_same(..)": {
+    "prefix": "ass",
+    "body": [
+      "assert_same(${1:expected}, ${0:actual})"
+    ],
+    "description": "TextMate Ruby bundle: assert_same(..)"
+  },
+  "assert_send(..)": {
+    "prefix": "ass",
+    "body": [
+      "assert_send([${1:object}, :${2:message}, ${0:args}])"
+    ],
+    "description": "TextMate Ruby bundle: assert_send(..)"
+  },
+  "assert_throws(..) { .. }": {
+    "prefix": "ast",
+    "body": [
+      "assert_throws(:${1:expected}) { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: assert_throws(..) { .. }"
+  },
+  "attr_accessor ..": {
+    "prefix": "rw",
+    "body": [
+      "attr_accessor :${0:attr_names}"
+    ],
+    "description": "TextMate Ruby bundle: attr_accessor .."
+  },
+  "attr_reader ..": {
+    "prefix": "r",
+    "body": [
+      "attr_reader :${0:attr_names}"
+    ],
+    "description": "TextMate Ruby bundle: attr_reader .."
+  },
+  "attr_writer ..": {
+    "prefix": "w",
+    "body": [
+      "attr_writer :${0:attr_names}"
+    ],
+    "description": "TextMate Ruby bundle: attr_writer .."
+  },
+  "class .. < DelegateClass .. initialize .. end": {
+    "prefix": "cla-",
+    "body": [
+      "class ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}} < DelegateClass(${2:ParentClass})",
+      "\tdef initialize${3/((^.*?\\S.*)|.*)/${2:+(}/}${3:args}${3/((^.*?\\S.*)|.*)/${2:+)}/}",
+      "\t\tsuper(${4:del_obj})",
+      "\t\t",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\t",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class .. < DelegateClass .. initialize .. end"
+  },
+  "class .. < ParentClass .. initialize .. end": {
+    "prefix": "cla",
+    "body": [
+      "class ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}} < ${2:ParentClass}",
+      "\tdef initialize${3/((^.*?\\S.*)|.*)/${2:+(}/}${3:args}${3/((^.*?\\S.*)|.*)/${2:+)}/}",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\t",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class .. < ParentClass .. initialize .. end"
+  },
+  "ClassName = Struct .. do .. end": {
+    "prefix": "cla",
+    "body": [
+      "${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}} = Struct.new(:${2:attr_names}) do",
+      "\tdef ${3:method_name}",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\t",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: ClassName = Struct .. do .. end"
+  },
+  "class .. < Test::Unit::TestCase .. end": {
+    "prefix": "tc",
+    "body": [
+      "require \"test/unit\"",
+      "",
+      "require \"${1:library_file_name}\"",
+      "",
+      "class Test${2:${1/([a-zA-Z0-9]+)|./${1:/capitalize}/g}} < Test::Unit::TestCase",
+      "\tdef test_${3:case_name}",
+      "\t\t$0",
+      "\tend",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class .. < Test::Unit::TestCase .. end"
+  },
+  "class .. end": {
+    "prefix": "cla",
+    "body": [
+      "class ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.[a-z]+)*/${1:/capitalize}/g}}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class .. end"
+  },
+  "class .. initialize .. end": {
+    "prefix": "cla",
+    "body": [
+      "class ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}}",
+      "\tdef initialize${2/((^.*?\\S.*)|.*)/${2:+(}/}${2:args}${2/((^.*?\\S.*)|.*)/${2:+)}/}",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\t",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class .. initialize .. end"
+  },
+  "class BlankSlate .. initialize .. end": {
+    "prefix": "cla",
+    "body": [
+      "class ${1:BlankSlate}",
+      "\tinstance_methods.each { |meth| undef_method(meth) unless meth =~ /\\A__/ }",
+      "\t",
+      "\tdef initialize${2/((^.*?\\S.*)|.*)/${2:+(}/}${2:args}${2/((^.*?\\S.*)|.*)/${2:+)}/}",
+      "\t\t@${3:delegate} = ${4:delegate_object}",
+      "\t\t",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\tdef method_missing(meth, *args, &block)",
+      "\t\t@${3:delegate}.send(meth, *args, &block)",
+      "\tend",
+      "\t",
+      "\t",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class BlankSlate .. initialize .. end"
+  },
+  "class << self .. end": {
+    "prefix": "cla",
+    "body": [
+      "class << ${1:self}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: class << self .. end"
+  },
+  "class_from_name()": {
+    "prefix": "clafn",
+    "body": [
+      "split(\"::\").inject(Object) { |par, const| par.const_get(const) }"
+    ],
+    "description": "TextMate Ruby bundle: class_from_name()"
+  },
+  "classify { |e| .. }": {
+    "prefix": "cl",
+    "body": [
+      "classify { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: classify { |e| .. }"
+  },
+  "collect { |e| .. }": {
+    "prefix": "col",
+    "body": [
+      "collect { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: collect { |e| .. }"
+  },
+  "deep_copy(..)": {
+    "prefix": "deec",
+    "body": [
+      "Marshal.load(Marshal.dump(${0:obj_to_copy}))"
+    ],
+    "description": "TextMate Ruby bundle: deep_copy(..)"
+  },
+  "def … end": {
+    "prefix": "def",
+    "body": [
+      "def ${1:method_name}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: def … end"
+  },
+  "def initialize .. end": {
+    "prefix": "defi",
+    "body": [
+      "def initialize${1/(.+)/(/}${1:args}${1/(.+)/)/}",
+      "  $0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: def initialize .. end"
+  },
+  "def method_missing .. end": {
+    "prefix": "defmm",
+    "body": [
+      "def method_missing(meth, *args, &blk)",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: def method_missing .. end"
+  },
+  "def self .. end": {
+    "prefix": "defs",
+    "body": [
+      "def self.${1:class_method_name}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: def self .. end"
+  },
+  "def test_ .. end": {
+    "prefix": "deft",
+    "body": [
+      "def test_${1:case_name}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: def test_ .. end"
+  },
+  "def_delegator ..": {
+    "prefix": "defd",
+    "body": [
+      "def_delegator :${1:@del_obj}, :${2:del_meth}, :${3:new_name}"
+    ],
+    "description": "TextMate Ruby bundle: def_delegator .."
+  },
+  "def_delegators ..": {
+    "prefix": "defds",
+    "body": [
+      "def_delegators :${1:@del_obj}, :${0:del_methods}"
+    ],
+    "description": "TextMate Ruby bundle: def_delegators .."
+  },
+  "define_method ... end": {
+    "prefix": "defm",
+    "body": [
+      "define_method :${1:method_name} do${2/(.+)/ |/}${2:args}${2/(.+)/|/}",
+      "  $0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: define_method ... end"
+  },
+  "delete_if { |e| .. }": {
+    "prefix": "deli",
+    "body": [
+      "delete_if { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: delete_if { |e| .. }"
+  },
+  "detect { |e| .. }": {
+    "prefix": "det",
+    "body": [
+      "detect { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: detect { |e| .. }"
+  },
+  "directory()": {
+    "prefix": "dir",
+    "body": [
+      "File.dirname(__FILE__)"
+    ],
+    "description": "TextMate Ruby bundle: directory()"
+  },
+  "Insert do |variable| … end": {
+    "prefix": "do",
+    "body": [
+      "do${1/(.+)/ |/}${1:variable}${1/(.+)/|/}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: Insert do |variable| … end"
+  },
+  "downto(0) { |n| .. }": {
+    "prefix": "dow",
+    "body": [
+      "downto(${1:0}) { ${2/(.+)/|/}${2:n}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: downto(0) { |n| .. }"
+  },
+  "each { |e| .. }": {
+    "prefix": "ea",
+    "body": [
+      "each { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each { |e| .. }"
+  },
+  "each_byte { |byte| .. }": {
+    "prefix": "eab",
+    "body": [
+      "each_byte { |${1:byte}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_byte { |byte| .. }"
+  },
+  "each_char { |chr| .. }": {
+    "prefix": "eac-",
+    "body": [
+      "each_char { |${1:chr}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_char { |chr| .. }"
+  },
+  "each_cons(..) { |group| .. }": {
+    "prefix": "eac-",
+    "body": [
+      "each_cons(${1:2}) { |${2:group}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_cons(..) { |group| .. }"
+  },
+  "each_index { |i| .. }": {
+    "prefix": "eai",
+    "body": [
+      "each_index { |${1:i}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_index { |i| .. }"
+  },
+  "each_key { |key| .. }": {
+    "prefix": "eak",
+    "body": [
+      "each_key { |${1:key}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_key { |key| .. }"
+  },
+  "each_line { |line| .. }": {
+    "prefix": "eal",
+    "body": [
+      "each_line$1 { |${2:line}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_line { |line| .. }"
+  },
+  "each_pair { |name, val| .. }": {
+    "prefix": "eap",
+    "body": [
+      "each_pair { |${1:name}, ${2:val}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_pair { |name, val| .. }"
+  },
+  "each_slice(..) { |group| .. }": {
+    "prefix": "eas-",
+    "body": [
+      "each_slice(${1:2}) { |${2:group}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_slice(..) { |group| .. }"
+  },
+  "each_value { |val| .. }": {
+    "prefix": "eav",
+    "body": [
+      "each_value { |${1:val}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_value { |val| .. }"
+  },
+  "each_with_index { |e, i| .. }": {
+    "prefix": "eawi",
+    "body": [
+      "each_with_index { |${1:e}, ${2:i}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: each_with_index { |e, i| .. }"
+  },
+  "elsif ...": {
+    "prefix": "elsif",
+    "body": [
+      "elsif ${1:condition}",
+      "\t$0"
+    ],
+    "description": "TextMate Ruby bundle: elsif ..."
+  },
+  "extend Forwardable": {
+    "prefix": "Forw-",
+    "body": [
+      "extend Forwardable"
+    ],
+    "description": "TextMate Ruby bundle: extend Forwardable"
+  },
+  "fetch(name) { |key| .. }": {
+    "prefix": "fet",
+    "body": [
+      "fetch(${1:name}) { ${2/(.+)/|/}${2:key}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: fetch(name) { |key| .. }"
+  },
+  "fill(range) { |i| .. }": {
+    "prefix": "fil",
+    "body": [
+      "fill(${1:range}) { ${2/(.+)/|/}${2:i}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: fill(range) { |i| .. }"
+  },
+  "find { |e| .. }": {
+    "prefix": "fin",
+    "body": [
+      "find { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: find { |e| .. }"
+  },
+  "find_all { |e| .. }": {
+    "prefix": "fina",
+    "body": [
+      "find_all { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: find_all { |e| .. }"
+  },
+  "flatten_once()": {
+    "prefix": "flao",
+    "body": [
+      "inject(Array.new) { |${1:arr}, ${2:a}| ${1:arr}.push(*${2:a}) }"
+    ],
+    "description": "TextMate Ruby bundle: flatten_once()"
+  },
+  "flunk(..)": {
+    "prefix": "flu",
+    "body": [
+      "flunk(\"${1:Failure message.}\")$0"
+    ],
+    "description": "TextMate Ruby bundle: flunk(..)"
+  },
+  "grep(/pattern/) { |match| .. }": {
+    "prefix": "gre",
+    "body": [
+      "grep(${1:/${2:pattern}/}) { |${3:match}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: grep(/pattern/) { |match| .. }"
+  },
+  "gsub(/../) { |match| .. }": {
+    "prefix": "gsu",
+    "body": [
+      "gsub(/${1:pattern}/) { ${2/(.+)/|/}${2:match}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: gsub(/../) { |match| .. }"
+  },
+  "Hash Pair — :key => \"value\"": {
+    "prefix": ":",
+    "body": [
+      "${1:key}: ${2:\"${3:value}\"}${4:, }"
+    ],
+    "description": "TextMate Ruby bundle: Hash Pair — :key => \"value\""
+  },
+  "include Comparable ..": {
+    "prefix": "Comp",
+    "body": [
+      "include Comparable",
+      "",
+      "def <=>(other)",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: include Comparable .."
+  },
+  "include Enumerable ..": {
+    "prefix": "Enum",
+    "body": [
+      "include Enumerable",
+      "",
+      "def each(&block)",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: include Enumerable .."
+  },
+  "inject(init) { |mem, var| .. }": {
+    "prefix": "inj",
+    "body": [
+      "inject${1/(.+)/(/}${1:init}${1/(.+)/)/} { |${2:mem}, ${3:var}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: inject(init) { |mem, var| .. }"
+  },
+  "lambda { |args| .. }": {
+    "prefix": "lam",
+    "body": [
+      "lambda { ${1/(.+)/|/}${1:args}${1/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: lambda { |args| .. }"
+  },
+  "loop { .. }": {
+    "prefix": "loo",
+    "body": [
+      "loop { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: loop { .. }"
+  },
+  "map { |e| .. }": {
+    "prefix": "map",
+    "body": [
+      "map { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: map { |e| .. }"
+  },
+  "map_with_index { |e, i| .. }": {
+    "prefix": "mapwi-",
+    "body": [
+      "enum_with_index.map { |${1:e}, ${2:i}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: map_with_index { |e, i| .. }"
+  },
+  "max { |a, b| .. }": {
+    "prefix": "max",
+    "body": [
+      "max { |a, b| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: max { |a, b| .. }"
+  },
+  "min { |a, b| .. }": {
+    "prefix": "min",
+    "body": [
+      "min { |a, b| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: min { |a, b| .. }"
+  },
+  "module .. ClassMethods .. end": {
+    "prefix": "mod",
+    "body": [
+      "module ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}}",
+      "\tmodule ClassMethods",
+      "\t\t$0",
+      "\tend",
+      "\t",
+      "\tmodule InstanceMethods",
+      "\t\t",
+      "\tend",
+      "\t",
+      "\tdef self.included(receiver)",
+      "\t\treceiver.extend         ClassMethods",
+      "\t\treceiver.send :include, InstanceMethods",
+      "\tend",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: module .. ClassMethods .. end"
+  },
+  "module .. end": {
+    "prefix": "mod",
+    "body": [
+      "module ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: module .. end"
+  },
+  "module .. module_function .. end": {
+    "prefix": "mod",
+    "body": [
+      "module ${1:${TM_FILENAME/(?:^|_)([A-Za-z0-9]+)(?:\\.rb)?/${1:/capitalize}/g}}",
+      "\tmodule_function",
+      "\t",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: module .. module_function .. end"
+  },
+  "namespace :.. do .. end": {
+    "prefix": "nam",
+    "body": [
+      "namespace :${1:$TM_FILENAME_BASE} do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: namespace :.. do .. end"
+  },
+  "Insert { |variable| … }": {
+    "prefix": "{",
+    "body": [
+      "{ ${1/(.+)/|/}${1:variable}${1/(.+)/| /}${2:$TM_SELECTED_TEXT} "
+    ],
+    "description": "TextMate Ruby bundle: Insert { |variable| … }"
+  },
+  "open(\"path/or/url\", \"w\") { |io| .. }": {
+    "prefix": "ope",
+    "body": [
+      "open(${1:\"${2:path/or/url/or/pipe}\"}${3/((^[rwab+]+$)|.*)/${2:+, \"}/}${3:w}${3/((^[rwab+]+$)|.*)/${2:+\"}/}) { |${4:io}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: open(\"path/or/url\", \"w\") { |io| .. }"
+  },
+  "option_parse { .. }": {
+    "prefix": "optp",
+    "body": [
+      "require \"optparse\"",
+      "",
+      "options = {${1:default: \"args\"}}",
+      "",
+      "ARGV.options do |opts|",
+      "\topts.banner = \"Usage:  #{File.basename(\\$PROGRAM_NAME)} [OPTIONS]${2/(^\\s*$|(.*\\S.*))/${2:+ }/}${2:OTHER_ARGS}\"",
+      "\t",
+      "\topts.separator \"\"",
+      "\topts.separator \"Specific Options:\"",
+      "\t",
+      "\t$0",
+      "\t",
+      "\topts.separator \"Common Options:\"",
+      "\t",
+      "\topts.on( \"-h\", \"--help\",",
+      "\t         \"Show this message.\" ) do",
+      "\t\tputs opts",
+      "\t\texit",
+      "\tend",
+      "\t",
+      "\tbegin",
+      "\t\topts.parse!",
+      "\trescue",
+      "\t\tputs opts",
+      "\t\texit",
+      "\tend",
+      "end",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: option_parse { .. }"
+  },
+  "partition { |e| .. }": {
+    "prefix": "par",
+    "body": [
+      "partition { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: partition { |e| .. }"
+  },
+  "pass(..)": {
+    "prefix": "pas",
+    "body": [
+      "pass(\"${1:Message.}\")$0"
+    ],
+    "description": "TextMate Ruby bundle: pass(..)"
+  },
+  "path_from_here( .. )": {
+    "prefix": "patfh",
+    "body": [
+      "File.join(File.dirname(__FILE__), *%w[${1:rel path here}])"
+    ],
+    "description": "TextMate Ruby bundle: path_from_here( .. )"
+  },
+  "randomize()": {
+    "prefix": "ran",
+    "body": [
+      "sort_by { rand }"
+    ],
+    "description": "TextMate Ruby bundle: randomize()"
+  },
+  "refine … end": {
+    "prefix": "refine",
+    "body": [
+      "refine ${1:ClassName} do",
+      "\t$2",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: refine … end"
+  },
+  "reject { |e| .. }": {
+    "prefix": "rej",
+    "body": [
+      "reject { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: reject { |e| .. }"
+  },
+  "require \"tc_..\" ..": {
+    "prefix": "ts",
+    "body": [
+      "require \"test/unit\"",
+      "",
+      "require \"tc_${1:test_case_file}\"",
+      "require \"tc_${2:test_case_file}\"",
+      ""
+    ],
+    "description": "TextMate Ruby bundle: require \"tc_..\" .."
+  },
+  "require '..'": {
+    "prefix": "req",
+    "body": [
+      "require '$0'"
+    ],
+    "description": "TextMate Ruby bundle: require '..'"
+  },
+  "require_gem \"..\"": {
+    "prefix": "reqg-",
+    "body": [
+      "require \"$0\""
+    ],
+    "description": "TextMate Ruby bundle: require_gem \"..\""
+  },
+  "results.report(..) { .. }": {
+    "prefix": "rep",
+    "body": [
+      "results.report(\"${1:name}:\") { TESTS.times { $0 } }"
+    ],
+    "description": "TextMate Ruby bundle: results.report(..) { .. }"
+  },
+  "reverse_each { |e| .. }": {
+    "prefix": "reve",
+    "body": [
+      "reverse_each { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: reverse_each { |e| .. }"
+  },
+  "scan(/../) { |match| .. }": {
+    "prefix": "sca",
+    "body": [
+      "scan(/${1:pattern}/) { |${2:match}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: scan(/../) { |match| .. }"
+  },
+  "select { |e| .. }": {
+    "prefix": "sel",
+    "body": [
+      "select { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: select { |e| .. }"
+  },
+  "singleton_class()": {
+    "prefix": "sinc",
+    "body": [
+      "class << self; self end"
+    ],
+    "description": "TextMate Ruby bundle: singleton_class()"
+  },
+  "skip(..)": {
+    "prefix": "ski",
+    "body": [
+      "skip(\"${1:Message.}\")$0"
+    ],
+    "description": "TextMate Ruby bundle: skip(..)"
+  },
+  "sort { |a, b| .. }": {
+    "prefix": "sor",
+    "body": [
+      "sort { |a, b| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: sort { |a, b| .. }"
+  },
+  "sort_by { |e| .. }": {
+    "prefix": "sorb",
+    "body": [
+      "sort_by { |${1:e}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: sort_by { |e| .. }"
+  },
+  "step(2) { |e| .. }": {
+    "prefix": "ste",
+    "body": [
+      "step(${1:2}) { ${2/(.+)/|/}${2:n}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: step(2) { |e| .. }"
+  },
+  "sub(/../) { |match| .. }": {
+    "prefix": "sub",
+    "body": [
+      "sub(/${1:pattern}/) { ${2/(.+)/|/}${2:match}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: sub(/../) { |match| .. }"
+  },
+  "task :task_name => [:dependent, :tasks] do .. end": {
+    "prefix": "tas",
+    "body": [
+      "desc \"${1:Task description}\"",
+      "task :${2:${3:task_name} => ${4:[:${5:dependent, :tasks}]}} do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: task :task_name => [:dependent, :tasks] do .. end"
+  },
+  "times { |n| .. }": {
+    "prefix": "tim",
+    "body": [
+      "times { ${1/(.+)/|/}${1:n}${1/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: times { |n| .. }"
+  },
+  "transaction( .. ) { .. }": {
+    "prefix": "tra",
+    "body": [
+      "transaction${1/((^.*?\\S.*)|.*)/${2:+(}/}${1:true}${1/((^.*?\\S.*)|.*)/${2:+)}/} { $0 }"
+    ],
+    "description": "TextMate Ruby bundle: transaction( .. ) { .. }"
+  },
+  "unix_filter { .. }": {
+    "prefix": "unif",
+    "body": [
+      "ARGF.each_line$1 do |${2:line}|",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: unix_filter { .. }"
+  },
+  "unless … end": {
+    "prefix": "unless",
+    "body": [
+      "unless ${1:condition}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: unless … end"
+  },
+  "until ... end": {
+    "prefix": "until",
+    "body": [
+      "until ${1:condition}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: until ... end"
+  },
+  "option(..)": {
+    "prefix": "opt",
+    "body": [
+      "opts.on( \"-${1:o}\", \"--${2:long-option-name}\"${3/(^\\s*$|(.*\\S.*))/${2:+, }/}${3:String},",
+      "         \"${4:Option description.}\" ) do |${6:opt}|",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: option(..)"
+  },
+  "upto(1.0/0.0) { |n| .. }": {
+    "prefix": "upt",
+    "body": [
+      "upto(${1:1.0/0.0}) { ${2/(.+)/|/}${2:n}${2/(.+)/| /}$0 }"
+    ],
+    "description": "TextMate Ruby bundle: upto(1.0/0.0) { |n| .. }"
+  },
+  "usage_if()": {
+    "prefix": "usai",
+    "body": [
+      "if ARGV.$1",
+      "\tabort \"Usage:  #{\\$PROGRAM_NAME} ${2:ARGS_GO_HERE}\"",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: usage_if()"
+  },
+  "usage_unless()": {
+    "prefix": "usau",
+    "body": [
+      "unless ARGV.$1",
+      "\tabort \"Usage:  #{\\$PROGRAM_NAME} ${2:ARGS_GO_HERE}\"",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: usage_unless()"
+  },
+  "when …": {
+    "prefix": "when",
+    "body": [
+      "when ${1:condition}",
+      "\t$0"
+    ],
+    "description": "TextMate Ruby bundle: when …"
+  },
+  "while ... end": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition}",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: while ... end"
+  },
+  "xmlread(..)": {
+    "prefix": "xml-",
+    "body": [
+      "REXML::Document.new(File.read(${1:\"${2:path/to/file}\"}))"
+    ],
+    "description": "TextMate Ruby bundle: xmlread(..)"
+  },
+  "xpath(..) { .. }": {
+    "prefix": "xpa",
+    "body": [
+      "elements.each(${1:\"${2://XPath}\"}) do |${3:node}|",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Ruby bundle: xpath(..) { .. }"
+  },
+  "zip(enums) { |row| .. }": {
+    "prefix": "zip",
+    "body": [
+      "zip(${1:enums}) { |${2:row}| $0 }"
+    ],
+    "description": "TextMate Ruby bundle: zip(enums) { |row| .. }"
+  }
+}

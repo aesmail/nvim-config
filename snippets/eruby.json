@@ -1,0 +1,367 @@
+{
+  "form_tag": {
+    "prefix": "ft",
+    "body": [
+      "<%= form_tag(${1:action: \"${5:update}\"}${6:, {${8:class}: \"${9:form}\"\\}}) do %>",
+      "  $0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_tag"
+  },
+  "content_for": {
+    "prefix": "conf",
+    "body": [
+      "<% content_for :${1:yield_label_in_layout} do %>",
+      "\t$0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: content_for"
+  },
+  "else (ERB)": {
+    "prefix": "else",
+    "body": [
+      "<% else %>",
+      "  "
+    ],
+    "description": "TextMate Ruby on Rails bundle: else (ERB)"
+  },
+  "end (ERB)": {
+    "prefix": "end",
+    "body": [
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: end (ERB)"
+  },
+  "f.fields_for (nff)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.fields_for :${1:attribute} do |${2:f}| %>",
+      "\t$0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.fields_for (nff)"
+  },
+  "fields_for": {
+    "prefix": "fields",
+    "body": [
+      "<%= fields_for :${1:model}, @${2:$1} do |$1| %>",
+      "  $0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: fields_for"
+  },
+  "for loop in rhtml": {
+    "prefix": "for",
+    "body": [
+      "<% if !${1:list}.blank? %>",
+      "  <% for ${2:item} in ${1} %>",
+      "    $3",
+      "  <% end %>",
+      "<% else %>",
+      "  $4",
+      "<% end %>",
+      ""
+    ],
+    "description": "TextMate Ruby on Rails bundle: for loop in rhtml"
+  },
+  "form_for check_box": {
+    "prefix": "ffcb",
+    "body": [
+      "<%= f.check_box :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for check_box"
+  },
+  "f.check_box (ffcb)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.check_box :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.check_box (ffcb)"
+  },
+  "form_for fields_for": {
+    "prefix": "nff",
+    "body": [
+      "<%= f.fields_for :${1:attribute} do |${2:f}| %>",
+      "\t$0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for fields_for"
+  },
+  "form_for file_field": {
+    "prefix": "ffff",
+    "body": [
+      "<%= f.file_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for file_field"
+  },
+  "f.file_field (ffff)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.file_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.file_field (ffff)"
+  },
+  "form_for hidden_field": {
+    "prefix": "ffhf",
+    "body": [
+      "<%= f.hidden_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for hidden_field"
+  },
+  "f.hidden_field (ffhf)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.hidden_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.hidden_field (ffhf)"
+  },
+  "form_for label": {
+    "prefix": "ffl",
+    "body": [
+      "<%= f.label :${1:attribute}${2:, \"${3:${1/([a-zA-Z]+)|(_)/${1:/capitalize}${2:+ }/g}}\"} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for label"
+  },
+  "f.label (ffl)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.label :${1:attribute}${2:, \"${3:${1/([a-zA-Z]+)|(_)/${1:/capitalize}${2:+ }/g}}\"} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.label (ffl)"
+  },
+  "form_for password_field": {
+    "prefix": "ffpf",
+    "body": [
+      "<%= f.password_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for password_field"
+  },
+  "f.password_field (ffpf)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.password_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.password_field (ffpf)"
+  },
+  "form_for radio_button": {
+    "prefix": "ffrb",
+    "body": [
+      "<%= f.radio_button :${1:attribute}, :${2:tag_value} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for radio_button"
+  },
+  "f.radio_button (ffrb)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.radio_button :${1:attribute}, :${2:tag_value} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.radio_button (ffrb)"
+  },
+  "form_for submit": {
+    "prefix": "ffs",
+    "body": [
+      "<%= f.submit \"${1:Submit}\"${2:, data: { turbo_submits_with: \"${3:$1ing...}\" \\}} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for submit"
+  },
+  "f.submit (ffs)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.submit \"${1:Submit}\"${2:, data: { turbo_submits_with: \"${3:$1ing...}\" \\}} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.submit (ffs)"
+  },
+  "form_for text_area": {
+    "prefix": "ffta",
+    "body": [
+      "<%= f.text_area :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for text_area"
+  },
+  "f.text_area (ffta)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.text_area :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.text_area (ffta)"
+  },
+  "form_for text_field": {
+    "prefix": "fftf",
+    "body": [
+      "<%= f.text_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for text_field"
+  },
+  "f.text_field (fftf)": {
+    "prefix": "f.",
+    "body": [
+      "<%= f.text_field :${1:attribute} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: f.text_field (fftf)"
+  },
+  "form_for": {
+    "prefix": "ff",
+    "body": [
+      "<%= form_for @${1:model} do |f| %>",
+      "  $0",
+      "<% end %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: form_for"
+  },
+  "if (ERB)": {
+    "prefix": "if",
+    "body": [
+      "<% if ${1:condition} %>$0"
+    ],
+    "description": "TextMate Ruby on Rails bundle: if (ERB)"
+  },
+  "image_submit_tag": {
+    "prefix": "ist",
+    "body": [
+      "<%= image_submit_tag(\"${1:agree.png}\"${2:${3:, id: \"${4:${1/(^(\\w+)(\\.\\w*)?$)/$2/}}\"}${5:, name: \"${6:${1/(^(\\w+)(\\.\\w*)?$)/$2/}}\"}${7:, class: \"${8:${1/(^(\\w+)(\\.\\w*)?$)/$2/}-button}\"}${9:, disabled: ${10:false}}}) %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: image_submit_tag"
+  },
+  "image_tag": {
+    "prefix": "it",
+    "body": [
+      "<%= image_tag \"$1${2:.png}\"${3:${4:, title: \"${5:title}\"}${6:, class: \"${7:class}\"}} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: image_tag"
+  },
+  "javascript_include_tag": {
+    "prefix": "jit",
+    "body": [
+      "<%= javascript_include_tag \"${1:application}\"${2:, \"data-turbo-track\": \"reload\"} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: javascript_include_tag"
+  },
+  "link_to (action)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to \"${1:link text...}\", action: \"${2:index}\" %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (action)"
+  },
+  "link_to (action, id)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to \"${1:link text...}\", action: \"${2:edit}\", id: ${3:@item} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (action, id)"
+  },
+  "link_to (controller)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to \"${1:link text...}\", controller: \"${2:items}\" %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (controller)"
+  },
+  "link_to (controller, action)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to \"${1:link text...}\", controller: \"${2:items}\", action: \"${3:index}\" %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (controller, action)"
+  },
+  "link_to (controller, action, id)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to \"${1:link text...}\", controller: \"${2:items}\", action: \"${3:edit}\", id: ${4:@item} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (controller, action, id)"
+  },
+  "link_to (nested path plural)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to ${1:\"${2:link text...}\"}, ${3:${10:parent}_${11:child}_path(${12:@}${13:${10}})} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (nested path plural)"
+  },
+  "link_to (nested path)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to ${1:\"${2:link text...}\"}, ${3:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (nested path)"
+  },
+  "link_to (path plural)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to ${1:\"${2:link text...}\"}, ${3:${4:model}s_path} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (path plural)"
+  },
+  "link_to (path)": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to ${1:\"${2:link text...}\"}, ${3:${12:model}_path(${13:@}${14:${12}})} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to (path)"
+  },
+  "link_to model": {
+    "prefix": "lt",
+    "body": [
+      "<%= link_to ${1:model}.${2:name}, ${3:${4:$1}_path(${14:$1})} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: link_to model"
+  },
+  "render (partial)": {
+    "prefix": "rp",
+    "body": [
+      "render partial: \"${1:item}\""
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial)"
+  },
+  "render (partial, collection)": {
+    "prefix": "rpc",
+    "body": [
+      "render partial: \"${1:item}\", collection: ${2:@$1s}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, collection)"
+  },
+  "render (partial, locals)": {
+    "prefix": "rpl",
+    "body": [
+      "render partial: \"${1:item}\", locals: { :${2:$1} => ${3:@$1}$0 }"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, locals)"
+  },
+  "render (partial, object)": {
+    "prefix": "rpo",
+    "body": [
+      "render partial: \"${1:item}\", object: ${2:@$1}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, object)"
+  },
+  "render (partial, status)": {
+    "prefix": "rps",
+    "body": [
+      "render partial: \"${1:item}\", status: ${2:500}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: render (partial, status)"
+  },
+  "stylesheet_link_tag": {
+    "prefix": "slt",
+    "body": [
+      "<%= stylesheet_link_tag \"${1:application}\"${2:, \"data-turbo-track\": \"reload\"} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: stylesheet_link_tag"
+  },
+  "submit_tag": {
+    "prefix": "st",
+    "body": [
+      "<%= submit_tag \"${1:Save changes}\"${2:, id: \"${3:submit}\"}${4:, name: \"${5:$3}\"}${6:, class: \"${7:form_$3}\"}${8:, disabled: ${9:false}}${10:, data: { turbo_submits_with: \"${11:Please wait...}\" \\}} %>"
+    ],
+    "description": "TextMate Ruby on Rails bundle: submit_tag"
+  },
+  "form_with": {
+    "prefix": "fw",
+    "body": [
+      "<%= form_with(model: ${1:@model}) do |${2:form}| %>",
+      "\t$0",
+      "<% end %>"
+    ],
+    "description": "Added (Rails 7/8): form_with"
+  }
+}

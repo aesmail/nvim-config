@@ -1,0 +1,49 @@
+{
+  "get :on => :member": {
+    "prefix": "get",
+    "body": [
+      "get '${1:recent}'${2:, on: :${3:member}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: get :on => :member"
+  },
+  "get :on => :collection": {
+    "prefix": "get",
+    "body": [
+      "get '${1:recent}'${2:, on: :${3:collection}}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: get :on => :collection"
+  },
+  "member routes": {
+    "prefix": "member",
+    "body": [
+      "member do",
+      "  ${1:get :${2:action}}",
+      "  ${3:put :${4:action}}",
+      "  ${5:post :${6:action}}",
+      "  ${7:delete :${8:action}}",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: member routes"
+  },
+  "collection routes": {
+    "prefix": "col",
+    "body": [
+      "collection do",
+      "  ${1:get :${2:action}}",
+      "  ${3:put :${4:action}}",
+      "  ${5:post :${6:action}}",
+      "  ${7:delete :${8:action}}",
+      "end"
+    ],
+    "description": "TextMate Ruby on Rails bundle: collection routes"
+  },
+  "resources": {
+    "prefix": "res",
+    "body": [
+      "resources :${1:posts}${2: do",
+      "  $3",
+      "end}"
+    ],
+    "description": "TextMate Ruby on Rails bundle: resources"
+  }
+}
