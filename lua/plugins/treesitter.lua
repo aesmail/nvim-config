@@ -1,6 +1,7 @@
 local parsers = {
   -- the stack
   "ruby", "embedded_template", "html", "css", "javascript", "yaml", "json", "sql", "dart",
+  "elixir", "heex", "eex",
   -- everything else you'll touch in a Rails repo
   "bash", "dockerfile", "toml", "diff", "gitcommit", "git_rebase", "gitignore",
   "lua", "luadoc", "vim", "vimdoc", "query", "markdown", "markdown_inline", "regex",
@@ -23,9 +24,9 @@ return {
           vim.wo.foldmethod = "expr"
           vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
           -- vim-ruby's indent script reads legacy syntax groups, which treesitter turns off
-          -- (everything would indent to column 0), and Neovim ships no Dart indent script.
-          -- ERB/HTML keep Neovim's own indent scripts.
-          if args.match == "ruby" or args.match == "dart" then
+          -- (everything would indent to column 0), and Neovim ships no Dart/Elixir/HEEx indent
+          -- scripts. ERB/HTML keep Neovim's own indent scripts.
+          if vim.list_contains({ "ruby", "dart", "elixir", "heex" }, args.match) then
             vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
           end
         end,

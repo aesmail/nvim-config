@@ -72,11 +72,12 @@ return {
       local npairs = require("nvim-autopairs")
       npairs.setup({ check_ts = true })
       npairs.add_rules(require("nvim-autopairs.rules.endwise-ruby"))
+      npairs.add_rules(require("nvim-autopairs.rules.endwise-elixir"))
     end,
   },
   {
     "windwp/nvim-ts-autotag",
-    ft = { "html", "eruby", "xml" },
+    ft = { "html", "eruby", "xml", "heex", "elixir" },
     opts = {},
   },
 }

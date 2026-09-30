@@ -16,11 +16,26 @@ return {
       })
 
       vim.lsp.config("html", {
-        filetypes = { "html", "eruby" },
-        init_options = { provideFormatter = false }, -- htmlbeautifier formats via conform
+        filetypes = { "html", "eruby", "heex" },
+        init_options = { provideFormatter = false }, -- htmlbeautifier / mix format handle formatting
       })
 
-      vim.lsp.enable({ "ruby_lsp", "html", "cssls" })
+      vim.lsp.config("tailwindcss", {
+        settings = {
+          tailwindCSS = {
+            -- Mix's deps/ can hold other packages' Tailwind stylesheets (Swoosh's mailbox
+            -- preview); the server would treat them as competing projects and match none.
+            files = {
+              exclude = { "**/.git/**", "**/node_modules/**", "**/.hg/**", "**/.svn/**", "**/deps/**", "**/_build/**" },
+            },
+          },
+        },
+      })
+
+      -- expert: the official Elixir language server (installed with mise).
+      -- tailwindcss: class completion/hover in Phoenix (HEEx, ~H) and Rails views; it only
+      -- starts in projects that use Tailwind.
+      vim.lsp.enable({ "ruby_lsp", "html", "cssls", "expert", "tailwindcss" })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),

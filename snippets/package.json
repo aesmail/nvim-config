@@ -1,12 +1,30 @@
 {
-  "name": "textmate-ruby-rails",
+  "name": "textmate-bundles",
   "contributes": {
     "snippets": [
+      {
+        "language": [
+          "eelixir"
+        ],
+        "path": "./eelixir.json"
+      },
+      {
+        "language": [
+          "elixir"
+        ],
+        "path": "./elixir.json"
+      },
       {
         "language": [
           "eruby"
         ],
         "path": "./eruby.json"
+      },
+      {
+        "language": [
+          "heex"
+        ],
+        "path": "./heex.json"
       },
       {
         "language": [

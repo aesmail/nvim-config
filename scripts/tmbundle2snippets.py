@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Convert TextMate's Ruby and Ruby on Rails bundles into VS Code-format snippets for LuaSnip.
+"""Convert TextMate bundles (Ruby, Ruby on Rails, Elixir) into VS Code-format snippets for LuaSnip.
 
     git clone https://github.com/textmate/ruby.tmbundle
     git clone https://github.com/textmate/ruby-on-rails-tmbundle
-    scripts/tmbundle2snippets.py ruby.tmbundle ruby-on-rails-tmbundle snippets/
+    git clone https://github.com/elixir-editors/elixir-tmbundle
+    scripts/tmbundle2snippets.py snippets/ ruby.tmbundle ruby-on-rails-tmbundle elixir-tmbundle
 
 TextMate snippet syntax is almost LSP/VS Code syntax. The differences handled here:
   * shell interpolation (`...`)          -> replaced with its (default) output
@@ -12,8 +13,11 @@ TextMate snippet syntax is almost LSP/VS Code syntax. The differences handled he
 The Rails bundle was last updated in 2019 (Rails 2/3 era), so snippets for APIs Rails has
 since removed are dropped, and the rest are modernised (before_action, `key:` hashes, <%= blocks).
 
-Both bundles: "Permission to copy, use, modify, sell and distribute this software is granted."
+Ruby and Rails bundles: "Permission to copy, use, modify, sell and distribute this software is granted."
+Elixir bundle: Apache License 2.0 (copied next to the generated snippets).
 """
+
+import shutil
 
 import json
 import plistlib
@@ -51,20 +55,28 @@ OVERRIDES = {
     ("rails", "scope lambda"): "scope :${1:name}, ->(${2:param}) { ${3:where(${4:field}: ${5:$2})} }",
     ("rails", "scope with extension"): "scope :${1:name}, -> { ${2:where(${3:field}: ${4:value})} } do\n\tdef ${5:method_name}\n\t\t$0\n\tend\nend",
     ("rails", "<%= Fixtures.identify(:symbol) %>"): "<%= ActiveRecord::FixtureSet.identify(:${1:name}) %>",
+    # Module name from the path, the way Mix projects lay files out:
+    # lib/my_app/accounts/user.ex -> MyApp.Accounts.User, test/my_app/user_test.exs -> MyApp.UserTest
+    ("elixir", "defmodule"): (
+        "defmodule ${1:${TM_FILEPATH/^.*\\/(?:lib|test)\\/([a-z0-9])|^.*\\/([a-z0-9])|\\/([a-z0-9])|_([a-z0-9])|\\.exs?$/"
+        "${1:/upcase}${2:/upcase}${3:+.}${3:/upcase}${4:/upcase}/g}} do\n\t$0\nend"
+    ),
+    # defcallback/defmacrocallback were removed from Elixir; these are the module attributes that replaced them
+    ("elixir", "defcallback"): "@callback $1 :: $0",
+    ("elixir", "defmacrocallback"): "@macrocallback $1 :: $0",
 }
 
-# Additions for things the 2019 bundle predates (clearly labelled in the completion menu)
-ADDITIONS = {
-    "rails": [
-        ("ba", "before_action", "before_action :${1:method}${2:, only: %i[ ${3:show edit update destroy} ]}"),
-    ],
-    "rails_controller": [
-        ("pe", "params.expect (strong parameters)", "def ${1:model}_params\n\tparams.expect(${1}: [ ${2::name} ])\nend"),
-    ],
-    "eruby": [
-        ("fw", "form_with", "<%= form_with(model: ${1:@model}) do |${2:form}| %>\n\t$0\n<% end %>"),
-    ],
-}
+# Additions for things the bundles predate (clearly labelled in the completion menu):
+# (filetype, trigger, name, body, source)
+ADDITIONS = [
+    ("rails", "ba", "before_action", "before_action :${1:method}${2:, only: %i[ ${3:show edit update destroy} ]}", "Added (Rails 7/8)"),
+    ("rails_controller", "pe", "params.expect (strong parameters)", "def ${1:model}_params\n\tparams.expect(${1}: [ ${2::name} ])\nend", "Added (Rails 7/8)"),
+    ("eruby", "fw", "form_with", "<%= form_with(model: ${1:@model}) do |${2:form}| %>\n\t$0\n<% end %>", "Added (Rails 7/8)"),
+    ("elixir", "mount", "LiveView mount/3", "def mount(${1:_params}, ${2:_session}, socket) do\n\t${0:{:ok, socket\\}}\nend", "Added (Phoenix LiveView)"),
+    ("elixir", "he", "LiveView handle_event/3", 'def handle_event("${1:event}", ${2:_params}, socket) do\n\t${0:{:noreply, socket\\}}\nend', "Added (Phoenix LiveView)"),
+    ("elixir", "hi", "LiveView handle_info/2", "def handle_info(${1:msg}, socket) do\n\t${0:{:noreply, socket\\}}\nend", "Added (Phoenix LiveView)"),
+    ("elixir", "render", "LiveView render/1 with ~H", 'def render(assigns) do\n\t~H"""\n\t$0\n\t"""\nend', "Added (Phoenix LiveView)"),
+]
 
 ERB_VARS = {
     "TM_RAILS_TEMPLATE_START_RUBY_EXPR": "<%= ",
@@ -289,6 +301,20 @@ def rails_targets(scope):
     return targets
 
 
+def elixir_targets(scope):
+    if "text.elixir" in scope or "text.html.elixir" in scope:
+        return ["eelixir", "heex"]
+    return ["elixir"]
+
+
+# Per bundle (keyed by the name in its info.plist): override/drop key, scope -> filetypes, content fixes
+BUNDLES = {
+    "Ruby": ("ruby", lambda scope: ["ruby"], modernise_ruby),
+    "Ruby on Rails": ("rails", rails_targets, lambda content: modernise_ruby(modernise_rails(content))),
+    "Elixir": ("elixir", elixir_targets, lambda content: content),
+}
+
+
 def load_snippets(bundle):
     for path in sorted(Path(bundle, "Snippets").iterdir()):
         with path.open("rb") as f:
@@ -297,8 +323,8 @@ def load_snippets(bundle):
             yield snippet
 
 
-def main(ruby_bundle, rails_bundle, out_dir):
-    collections, problems, dropped = {}, [], set()
+def main(out_dir, *bundles):
+    collections, problems, dropped, licenses, kinds = {}, [], set(), [], set()
 
     def add(ft, trigger, name, body, source):
         # The key is the snippet's name in LuaSnip (and in the menu for ambiguous triggers).
@@ -308,50 +334,57 @@ def main(ruby_bundle, rails_bundle, out_dir):
             key, n = f"{name} ({n})", n + 1
         coll[key] = {"prefix": trigger, "body": body.split("\n"), "description": f"{source}: {name}"}
 
-    for bundle, kind in ((ruby_bundle, "ruby"), (rails_bundle, "rails")):
-        source = "TextMate " + ("Ruby" if kind == "ruby" else "Ruby on Rails") + " bundle"
+    for bundle in bundles:
+        with Path(bundle, "info.plist").open("rb") as f:
+            bundle_name = plistlib.load(f)["name"]
+        if bundle_name not in BUNDLES:
+            sys.exit(f"Unknown bundle {bundle_name!r} ({bundle}); known: {', '.join(BUNDLES)}")
+        kind, targets_for, modernise = BUNDLES[bundle_name]
+        kinds.add(kind)
+        if Path(bundle, "LICENSE").exists():
+            licenses.append((Path(bundle, "LICENSE"), f"LICENSE-{Path(bundle).name}"))
+        source = f"TextMate {bundle_name} bundle"
         for snip in load_snippets(bundle):
             name, trigger, scope = snip["name"], snip["tabTrigger"], snip.get("scope", "")
             if kind == "rails" and name in RAILS_DROP:
                 dropped.add(name)
                 continue
-            targets = ["ruby"] if kind == "ruby" else rails_targets(scope)
+            targets = targets_for(scope)
             if not targets:
                 continue
             content = OVERRIDES.get((kind, name))
             try:
                 if content is None:
-                    content = convert_shell(snip["content"])
-                    if kind == "rails":
-                        content = modernise_rails(content)
-                    content = convert_transforms(modernise_ruby(content))
+                    content = convert_transforms(modernise(convert_shell(snip["content"])))
             except Unconvertible as e:
                 problems.append(f"{kind}: {name} [{trigger}]: {e}")
                 continue
             for ft in targets:
                 add(ft, trigger, name, content, source)
 
-    for ft, items in ADDITIONS.items():
-        for trigger, name, body in items:
-            add(ft, trigger, name, body, "Added (Rails 7/8)")
+    for ft, trigger, name, body, source in ADDITIONS:
+        if ft.split("_")[0] in kinds or (ft == "eruby" and "rails" in kinds):
+            add(ft, trigger, name, body, source)
 
     missing = RAILS_DROP - dropped
-    if missing:
+    if "rails" in kinds and missing:
         problems.append(f"drop list entries not found: {sorted(missing)}")
     if problems:
         sys.exit("Could not convert:\n  " + "\n  ".join(problems))
 
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    package = {"name": "textmate-ruby-rails", "contributes": {"snippets": []}}
+    package = {"name": "textmate-bundles", "contributes": {"snippets": []}}
     for ft in sorted(collections):
         (out / f"{ft}.json").write_text(json.dumps(collections[ft], indent=2, ensure_ascii=False) + "\n")
         package["contributes"]["snippets"].append({"language": [ft], "path": f"./{ft}.json"})
         print(f"{ft:18} {len(collections[ft]):4} snippets")
     (out / "package.json").write_text(json.dumps(package, indent=2) + "\n")
+    for src, dest in licenses:
+        shutil.copyfile(src, out / dest)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) < 3:
         sys.exit(__doc__)
     main(*sys.argv[1:])

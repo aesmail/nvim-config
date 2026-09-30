@@ -291,6 +291,13 @@ local groups = {
   ["@keyword.directive.ruby"] = { fg = c.comment, italic = true }, -- shebang
   ["@function.builtin.ruby"] = { fg = c.keyword }, -- attr_accessor/include: special-method
 
+  -- Elixir: aliases not used as receivers (alias Foo.Bar, %User{}) have no TextMate scope
+  ["@module.elixir"] = { fg = c.fg },
+
+  -- HEEx
+  ["@operator.heex"] = { fg = c.tag },
+  ["@constant.heex"] = { fg = c.doctype },
+
   -- ERB: delimiters are plain; embedded code gets a faint background
   ["@keyword.embedded_template"] = { fg = c.fg },
   ["@embedded.erb"] = { bg = c.erb_bg },

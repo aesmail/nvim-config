@@ -7,7 +7,10 @@
 --   rails_migration   meta.rails.migration(.create_table)  db/migrate/**
 --   rails_fixtures    source.yaml (fixtures)               test/fixtures/**
 --   eruby             text.html.erb.rails                  ERB templates
--- Inside <% %> in an ERB file the Ruby + Rails snippets apply instead, as they did in TextMate.
+--   elixir            source.elixir                        Elixir files
+--   heex, eelixir     text.html.elixir                     HEEx / EEx templates
+-- Inside <% %> in an ERB file the Ruby + Rails snippets apply instead, and inside {...} or
+-- <%= %> in a HEEx/EEx template the Elixir ones, as they did in TextMate.
 local M = {}
 
 local rails_scopes = {
@@ -17,6 +20,9 @@ local rails_scopes = {
   { "/db/migrate/", "rails_migration" },
   { "/test/fixtures/", "rails_fixtures" },
 }
+
+-- template filetype -> language of the code embedded in it
+local embedded = { eruby = "ruby", heex = "elixir", eelixir = "elixir" }
 
 local function rails_root(buf)
   local cached = vim.b[buf].snippet_rails_root
@@ -38,12 +44,12 @@ local function rails_filetypes(buf)
   return fts
 end
 
-local function in_embedded_ruby(buf)
+local function in_embedded_code(buf, lang)
   local ok, parser = pcall(vim.treesitter.get_parser, buf)
   if not ok or not parser then return false end
   local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-  local lang = parser:language_for_range({ row - 1, col, row - 1, col })
-  return lang and lang:lang() == "ruby"
+  local tree = parser:language_for_range({ row - 1, col, row - 1, col })
+  return tree and tree:lang() == lang
 end
 
 --- Snippet filetypes to *load* for a buffer (LuaSnip's load_ft_func).
@@ -51,7 +57,7 @@ function M.for_buffer(buf)
   local ft = vim.bo[buf].filetype
   local fts = { ft }
   if ft == "ruby" or ft == "eruby" or ft == "yaml" then vim.list_extend(fts, rails_filetypes(buf)) end
-  if ft == "eruby" then table.insert(fts, "ruby") end
+  if embedded[ft] then table.insert(fts, embedded[ft]) end
   return fts
 end
 
@@ -61,13 +67,11 @@ function M.at_cursor()
   local ft = vim.bo[buf].filetype
   if ft == "ruby" or ft == "yaml" then
     return vim.list_extend({ ft }, rails_filetypes(buf))
-  elseif ft == "eruby" then
-    if in_embedded_ruby(buf) then
-      local fts = { "ruby" }
-      if rails_root(buf) then table.insert(fts, "rails") end
-      return fts
-    end
-    return { "eruby" }
+  elseif embedded[ft] then
+    local lang = embedded[ft]
+    if not in_embedded_code(buf, lang) then return { ft } end
+    if lang == "ruby" and rails_root(buf) then return { "ruby", "rails" } end
+    return { lang }
   end
   return { ft }
 end

@@ -1,0 +1,9 @@
+{
+  "Insert EEx Tag": {
+    "prefix": "ee",
+    "body": [
+      "<% ${0:$TM_SELECTED_TEXT} %>"
+    ],
+    "description": "TextMate Elixir bundle: Insert EEx Tag"
+  }
+}

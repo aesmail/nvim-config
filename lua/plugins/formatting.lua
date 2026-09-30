@@ -20,6 +20,10 @@ return {
         ruby = { "rubocop", lsp_format = "prefer" },
         eruby = { "htmlbeautifier" },
         html = { "htmlbeautifier" },
+        -- Expert formats Elixir inside a Mix project; `mix format` covers loose scripts, and HEEx,
+        -- which Expert leaves alone (Phoenix's .formatter.exs plugs in the HEEx formatter).
+        elixir = { "mix", lsp_format = "prefer" },
+        heex = { "mix" },
       },
       default_format_opts = { lsp_format = "fallback" },
       format_on_save = function()

@@ -1,0 +1,364 @@
+{
+  "case": {
+    "prefix": "case",
+    "body": [
+      "case $1 do",
+      "\t$2 ->",
+      "\t\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: case"
+  },
+  "cond": {
+    "prefix": "cond",
+    "body": [
+      "cond do",
+      "\t$1 ->",
+      "\t\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: cond"
+  },
+  "def": {
+    "prefix": "def",
+    "body": [
+      "def $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: def"
+  },
+  "def (one line)": {
+    "prefix": "df",
+    "body": [
+      "def $1, do: $0"
+    ],
+    "description": "TextMate Elixir bundle: def (one line)"
+  },
+  "defcallback": {
+    "prefix": "defc",
+    "body": [
+      "@callback $1 :: $0"
+    ],
+    "description": "TextMate Elixir bundle: defcallback"
+  },
+  "defdelegate": {
+    "prefix": "defd",
+    "body": [
+      "defdelegate $1 to: $0"
+    ],
+    "description": "TextMate Elixir bundle: defdelegate"
+  },
+  "defexception": {
+    "prefix": "defe",
+    "body": [
+      "defexception [${1::message}]"
+    ],
+    "description": "TextMate Elixir bundle: defexception"
+  },
+  "defimpl": {
+    "prefix": "defi",
+    "body": [
+      "defimpl $1, for: $2 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defimpl"
+  },
+  "defmacro": {
+    "prefix": "defm",
+    "body": [
+      "defmacro $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defmacro"
+  },
+  "defmacrocallback": {
+    "prefix": "defmc",
+    "body": [
+      "@macrocallback $1 :: $0"
+    ],
+    "description": "TextMate Elixir bundle: defmacrocallback"
+  },
+  "defmacrop": {
+    "prefix": "defmp",
+    "body": [
+      "defmacrop $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defmacrop"
+  },
+  "defmodule": {
+    "prefix": "defmod",
+    "body": [
+      "defmodule ${1:${TM_FILEPATH/^.*\\/(?:lib|test)\\/([a-z0-9])|^.*\\/([a-z0-9])|\\/([a-z0-9])|_([a-z0-9])|\\.exs?$/${1:/upcase}${2:/upcase}${3:+.}${3:/upcase}${4:/upcase}/g}} do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defmodule"
+  },
+  "defp": {
+    "prefix": "defp",
+    "body": [
+      "defp $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defp"
+  },
+  "defprotocol": {
+    "prefix": "defpro",
+    "body": [
+      "defprotocol $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: defprotocol"
+  },
+  "defstruct": {
+    "prefix": "defs",
+    "body": [
+      "defstruct $1: $2"
+    ],
+    "description": "TextMate Elixir bundle: defstruct"
+  },
+  "describe": {
+    "prefix": "describe",
+    "body": [
+      "describe \"$1\" do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: describe"
+  },
+  "do": {
+    "prefix": "do",
+    "body": [
+      "do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: do"
+  },
+  "doc": {
+    "prefix": "doc",
+    "body": [
+      "@doc \"\"\"",
+      "$0",
+      "\"\"\""
+    ],
+    "description": "TextMate Elixir bundle: doc"
+  },
+  "fn": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:args}${1/((.+))/${2:+ }/}-> $2 end$0"
+    ],
+    "description": "TextMate Elixir bundle: fn"
+  },
+  "for": {
+    "prefix": "for",
+    "body": [
+      "for ${1:item} <- ${2:items} do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: for"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: if"
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": [
+      "if $1 do",
+      "\t$2",
+      "else",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: if else"
+  },
+  "if else (one line)": {
+    "prefix": "ife:",
+    "body": [
+      "if $1, do: $2, else: $0"
+    ],
+    "description": "TextMate Elixir bundle: if else (one line)"
+  },
+  "if (one line)": {
+    "prefix": "if:",
+    "body": [
+      "if $1, do: $0"
+    ],
+    "description": "TextMate Elixir bundle: if (one line)"
+  },
+  "import": {
+    "prefix": "imp",
+    "body": [
+      "import $0"
+    ],
+    "description": "TextMate Elixir bundle: import"
+  },
+  "inspect": {
+    "prefix": "i",
+    "body": [
+      "inspect($0)"
+    ],
+    "description": "TextMate Elixir bundle: inspect"
+  },
+  "IO.inspect": {
+    "prefix": "ii",
+    "body": [
+      "IO.inspect($0)"
+    ],
+    "description": "TextMate Elixir bundle: IO.inspect"
+  },
+  "key => value": {
+    "prefix": "::",
+    "body": [
+      "${1:key} => ${2:value}$0"
+    ],
+    "description": "TextMate Elixir bundle: key => value"
+  },
+  "map/struct": {
+    "prefix": "%",
+    "body": [
+      "%${1:Struct}{$2}$0"
+    ],
+    "description": "TextMate Elixir bundle: map/struct"
+  },
+  "moduledoc": {
+    "prefix": "mdoc",
+    "body": [
+      "@moduledoc \"\"\"",
+      "$0",
+      "\"\"\""
+    ],
+    "description": "TextMate Elixir bundle: moduledoc"
+  },
+  "pry": {
+    "prefix": "pry",
+    "body": [
+      "require IEx; IEx.pry()"
+    ],
+    "description": "TextMate Elixir bundle: pry"
+  },
+  "receive": {
+    "prefix": "rec",
+    "body": [
+      "receive do",
+      "\t${1:{${2::${3:message_type}}, ${4:value}\\}} ->",
+      "\t\t${0:# code}",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: receive"
+  },
+  "require": {
+    "prefix": "req",
+    "body": [
+      "require $0"
+    ],
+    "description": "TextMate Elixir bundle: require"
+  },
+  "setup": {
+    "prefix": "setup",
+    "body": [
+      "setup do",
+      "\t$0",
+      "",
+      "\t:ok",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: setup"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "test \"$1\" do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: test"
+  },
+  "unless": {
+    "prefix": "unless",
+    "body": [
+      "unless $1 do",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: unless"
+  },
+  "unless else": {
+    "prefix": "unlesse",
+    "body": [
+      "unless $1 do",
+      "\t$2",
+      "else",
+      "\t$0",
+      "end"
+    ],
+    "description": "TextMate Elixir bundle: unless else"
+  },
+  "unless else (one line)": {
+    "prefix": "unlesse:",
+    "body": [
+      "unless $1, do: $2, else: $0"
+    ],
+    "description": "TextMate Elixir bundle: unless else (one line)"
+  },
+  "unless (one line)": {
+    "prefix": "unless:",
+    "body": [
+      "unless $1, do: $0"
+    ],
+    "description": "TextMate Elixir bundle: unless (one line)"
+  },
+  "LiveView mount/3": {
+    "prefix": "mount",
+    "body": [
+      "def mount(${1:_params}, ${2:_session}, socket) do",
+      "\t${0:{:ok, socket\\}}",
+      "end"
+    ],
+    "description": "Added (Phoenix LiveView): LiveView mount/3"
+  },
+  "LiveView handle_event/3": {
+    "prefix": "he",
+    "body": [
+      "def handle_event(\"${1:event}\", ${2:_params}, socket) do",
+      "\t${0:{:noreply, socket\\}}",
+      "end"
+    ],
+    "description": "Added (Phoenix LiveView): LiveView handle_event/3"
+  },
+  "LiveView handle_info/2": {
+    "prefix": "hi",
+    "body": [
+      "def handle_info(${1:msg}, socket) do",
+      "\t${0:{:noreply, socket\\}}",
+      "end"
+    ],
+    "description": "Added (Phoenix LiveView): LiveView handle_info/2"
+  },
+  "LiveView render/1 with ~H": {
+    "prefix": "render",
+    "body": [
+      "def render(assigns) do",
+      "\t~H\"\"\"",
+      "\t$0",
+      "\t\"\"\"",
+      "end"
+    ],
+    "description": "Added (Phoenix LiveView): LiveView render/1 with ~H"
+  }
+}
