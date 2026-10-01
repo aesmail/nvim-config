@@ -119,3 +119,11 @@ make distclean && make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$HOME/neovi
 ```
 
 Plugins: `:Lazy update` (versions are pinned in `lazy-lock.json`).
+
+## License
+
+The configuration is released under the [MIT License](LICENSE).
+
+The snippet files in `snippets/` are converted from TextMate's Ruby, Ruby on Rails and Elixir
+bundles and stay under those bundles' licenses; `snippets/NOTICE.md` lists the sources, licenses
+and what was changed. The Sunburst colors come from TextMate's Sunburst theme.
